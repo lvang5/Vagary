@@ -72,7 +72,7 @@ class RegisterPage extends Component {
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
-            <label htmlFor="username">
+            <label htmlFor="Username">
               Username:
               <input
                 type="text"
@@ -93,13 +93,105 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
+          {/* <div>
+            <label >
+              First Name:
+              <input
+                type="text"
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Last Name:
+              <input
+                type="text"
+              
+              />
+            </label>
+          </div>
+          <div>
+            <label >
+              Street Address:
+              <input
+                type="text"
+              />
+            </label>
+          </div>
+          <div>
+            <label >
+              City:
+              <input
+                type="text"
+              />
+            </label>
+          </div>
+          <div>
+            <label >
+              State:
+              <input
+                type="text"
+              />
+            </label>
+          </div>
+          <div>
+            <label >
+              Zipcode:
+              <input
+                type="number"
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Credit Card Number:
+              <input
+                type="number"
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Expiration Month:
+              <input
+                type="number"
+              />
+            </label>
+          </div>
+
+              <div>
+            <label >
+              Expiration Month:
+              <input
+                type="number"
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Expiration Year:
+              <input
+                type="number"
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Security Code:
+              <input
+                type="number"
+              />
+            </label>
+          </div> */}
+
+
           <div>
             <input
               type="submit"
               name="submit"
               value="Register"
             />
-            <Link to="/home">Cancel</Link>
+            <Link to="/login">Cancel</Link>
           </div>
         </form>
       </div>

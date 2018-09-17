@@ -21,15 +21,15 @@ class LoginPage extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    // this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch(clearError());
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName !== null) {
-      this.props.history.push('user');
-    }
-  }
+  // componentDidUpdate() {
+  //   if (!this.props.user.isLoading && this.props.user.userName !== null) {
+  //     this.props.history.push('user');
+  //   }
+  // }
 
   login = (event) => {
     event.preventDefault();

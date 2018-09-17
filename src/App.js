@@ -9,39 +9,69 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import UserPage from './components/UserPage/UserPage';
-import InfoPage from './components/InfoPage/InfoPage';
-
+import LandingPage from './components/LandingPage/LandingPage.js';
+import CarForm from './components/CarForm/CarForm.js';
+import CarInfo from './components/CarInfo/CarInfo.js';
+import StartRide from './components/StartRide/StartRide.js';
+import RideHistory from './components/RideHistory/RideHistory.js';
+import Feedback from './components/Feedback/Feedback.js';
+import UserProfile from './components/UserProfile/UserProfile.js'
 import './styles/main.css';
 
+
 const App = () => (
-  <div>
-    <Header title="Project Base" />
+ <div>
+   
     <Router>
+    <div>
+    <Header value="Vagary"/>
       <Switch>
+        
+    
         <Redirect exact from="/" to="/home" />
         <Route
           path="/home"
-          component={LoginPage}
+          component={LandingPage}
         />
         <Route
           path="/register"
           component={RegisterPage}
         />
         <Route
-          path="/user"
-          component={UserPage}
+          path="/login"
+          component={LoginPage}
         />
         <Route
-          path="/info"
-          component={InfoPage}
+          path="/rent"
+          component={CarForm}
+        />
+        <Route
+          path="/carinfo"
+          component={CarInfo}
+        />
+        <Route
+          path="/start"
+          component={StartRide}
+        />
+        <Route
+          path="/history"
+          component={RideHistory}
+        />
+        <Route
+          path="/feedback"
+          component={Feedback}
+        />
+        <Route
+          path="/profile"
+          component={UserProfile}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 
       </Switch>
+      </div>
     </Router>
-  </div>
+</div>
 );
 
 export default App;
