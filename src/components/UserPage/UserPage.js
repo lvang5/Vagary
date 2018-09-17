@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Nav from '../../components/Nav/Nav';
+import LoginNav from '../../components/Nav/LoginNav';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
@@ -49,7 +49,7 @@ class UserPage extends Component {
 
     return (
       <div>
-        <Nav />
+        <LoginNav />
         { content }
       </div>
     );

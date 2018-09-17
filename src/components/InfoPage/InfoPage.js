@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Nav from '../../components/Nav/Nav';
+import LoginNav from '../../components/Nav/LoginNav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
@@ -34,7 +34,7 @@ class InfoPage extends Component {
 
     return (
       <div>
-        <Nav />
+        <LoginNav />
         { content }
       </div>
     );
