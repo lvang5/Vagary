@@ -20,7 +20,7 @@ class LoginNav extends Component{
   }
 
   logout = () => {
-    this.props.dispatch(triggerLogout());
+      this.props.dispatch(triggerLogout());
   }
 
 
@@ -44,7 +44,11 @@ class LoginNav extends Component{
          <button
             onClick={this.logout}
           >
+            <Link to="/home">
             Log Out
+            {/* Change button and text */}
+          </Link>
+            
           </button>
         </li>
       </ul>

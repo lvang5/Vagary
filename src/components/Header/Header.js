@@ -28,9 +28,9 @@ const Header = ({ title, user }) => (
     </div>
     {/* Conditional rendering */}
     {user.userName ? (
-      <LogoutNav />
-    ) : (
       <LoginNav />
+    ) : (
+      <LogoutNav />
       
     )}
     
