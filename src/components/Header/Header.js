@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userInfo } from 'os';
 
-// if(user === loggedin) {
-//   user loginNav
-// }else {
-//   loggoutNav
-// }
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -26,7 +21,7 @@ const Header = ({ title, user }) => (
         
       </h1>
     </div>
-    {/* Conditional rendering */}
+    {/* Conditional rendering to toggle Navigation bar*/}
     {user.userName ? (
       <LoginNav />
     ) : (

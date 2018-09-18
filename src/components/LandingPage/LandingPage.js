@@ -8,7 +8,7 @@ class LandingPage extends Component {
   }
 
   handleClick = () => {
-    // this.props.history.push('view');
+    this.props.history.push('view');
     console.log('clicked');
 
   }
@@ -25,18 +25,18 @@ class LandingPage extends Component {
         <button onClick={this.handleClick}>Submit</button>
         {/* Find image for backgroud */}
         <div>
-        <div className="container-div">
-          some text
+          <div className="container-div">
+            some text
            {/* Mission Statement */}
+          </div>
+          <div>
+            some text
+  
+          </div>
+          <div>
+            some text
+          </div>
         </div>
-        <div>
-          some text
-
-           </div>
-        <div>
-          some text
-           </div>
-           </div>
       </div>
     );
 

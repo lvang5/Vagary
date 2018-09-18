@@ -49,10 +49,15 @@ class CarForm extends Component {
     //   );
     // }
 
+
+    this.sendForm = () => {
+      this.props.history.push('home');
+    }
+
     return (
       <div>
         <h1> Car Form </h1>
-        <form>
+        <form onSubmit={this.sendForm}>
           {/* get input values */}
           <input placeholder="Make" /> <br />
           <input placeholder="Model" /> <br />
