@@ -11,6 +11,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import LandingPage from './components/LandingPage/LandingPage.js';
 import CarForm from './components/CarForm/CarForm.js';
+import ViewCars from './components/ViewCars/ViewCars.js'
 import CarInfo from './components/CarInfo/CarInfo.js';
 import StartRide from './components/StartRide/StartRide.js';
 import RideHistory from './components/RideHistory/RideHistory.js';
@@ -19,12 +20,13 @@ import UserProfile from './components/UserProfile/UserProfile.js'
 import './styles/main.css';
 
 
+
 const App = () => (
  <div>
    
     <Router>
     <div>
-    <Header value="Vagary"/>
+    <Header title="Vagary"/>
       <Switch>
         
     
@@ -44,6 +46,10 @@ const App = () => (
         <Route
           path="/rent"
           component={CarForm}
+        />
+        <Route
+          path="/view"
+          component={ViewCars}
         />
         <Route
           path="/carinfo"

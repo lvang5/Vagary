@@ -9,33 +9,64 @@ const mapStateToProps = state => ({
 });
 
 class CarForm extends Component {
-  componentDidMount() {
-    this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
-  }
 
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+  constructor() {
+    super()
+    this.state = {
+      car: { make: '',
+      model: '',
+      color: '',
+      year: '',
+      city: '',
+      state: '',
+      latitude: '',
+      longitude: '',
+
+
+      }
     }
   }
+  // componentDidMount() {
+  //   this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+  // }
+
+  // componentDidUpdate() {
+  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
+  //     this.props.history.push('home');
+  //   }
+  // }
 
   render() {
-    let content = null;
+    // let content = null;
 
-    if (this.props.user.userName) {
-      content = (
-        <div>
-          <p>
-           Rent your car
-          </p>
-        </div>
-      );
-    }
+    // if (this.props.user.userName) {
+    //   content = (
+    //     <div>
+    //       <p>
+    //        Rent your car
+    //       </p>
+    //     </div>
+    //   );
+    // }
 
     return (
       <div>
-        
-        { content }
+        <h1> Car Form </h1>
+        <form>
+          {/* get input values */}
+          <input placeholder="Make" /> <br />
+          <input placeholder="Model" /> <br />
+          <input placeholder="Color" /> <br />
+          <input placeholder="Year" /> <br />
+          <input placeholder="City" /> <br />
+          <input placeholder="State" /> <br />
+          <input placeholder="Latitude" /> <br />
+          <input placeholder="Longitude" /> <br />
+          {/* move button to far right */}
+          <input type="submit" />
+        </form>
+
+        {/* { content } */}
       </div>
     );
   }

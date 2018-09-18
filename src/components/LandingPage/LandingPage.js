@@ -1,66 +1,48 @@
 import React, { Component } from 'react';
 
 
-
-
-// import { USER_ACTIONS } from '../../redux/actions/userActions';
-// import { triggerLogout } from '../../redux/actions/loginActions';
-
-
-// const mapStateToProps = state => ({
-//   user: state.user,
-// });
-
 class LandingPage extends Component {
-  // componentDidMount() {
-  //   this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-  // }
+  constructor() {
+    super()
+    this.state = { location: [] }
+  }
 
-  // componentDidUpdate() {
-  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
-  //     this.props.history.push('home');
-  //   }
-  // }
+  handleClick = () => {
+    // this.props.history.push('view');
+    console.log('clicked');
 
-  // logout = () => {
-  //   this.props.dispatch(triggerLogout());
-  // }
-    // let content = null;
+  }
 
-    // if (this.props.user.userName) {
-    //   content = (
-     
-    //   );
+
+
+
 
   render() {
-  
     return (
-      
-       
       <div>
-         Welcome to the landing 
+        Welcome to the landing page
+         <input placeholder="e.g. City, State, Zipcode" />
+        <button onClick={this.handleClick}>Submit</button>
+        {/* Find image for backgroud */}
+        <div>
+        <div className="container-div">
+          some text
+           {/* Mission Statement */}
+        </div>
+        <div>
+          some text
 
-         {/* <h1
-           id="welcome"
-         >
-         This is the landing page
-           Welcome to Vagary, { this.props.user.userName }!
-         </h1>
-         <p>Your ID is: {this.props.user.id}</p>
-         <button
-           onClick={this.logout}
-         >
-           Log Out
-         </button> */}
-       </div>
-    
-   );
- 
-    }
+           </div>
+        <div>
+          some text
+           </div>
+           </div>
+      </div>
+    );
 
-    
+  }
 }
 
-// this allows us to use <App /> in index.js
+
 export default (LandingPage);
 
