@@ -21,17 +21,21 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-    console.log(req.body);
+    console.log(req.body.newCar);
     if(req.isAuthenticated()) {
-      const elfToAdd = req.body;
-      const queryText = `INSERT INTO "item"
-                          ("person_id", "description", "image_url")
-                          VALUES ($1, $2, $3);`;
-      pool.query(queryText, [req.user.id, elfToAdd.newElf.description, elfToAdd.newElf.url])
+      const carToAdd = req.body.newCar;
+      const queryText = `INSERT INTO "car" ("person_id", "make", "model",
+                         "color", "year", "city", "state", "image_path", 
+                         "latitude", "longitude")
+                          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+      pool.query(queryText, [req.user.id, carToAdd.make, carToAdd.model,
+                             carToAdd.color, carToAdd.year, carToAdd.city,
+                             carToAdd.city, carToAdd.state, carToAdd.image_path,
+                             carToAdd.latitude, carToAdd.longitude])
       .then((results) =>{
           res.send(results.rows);
       }).catch((error)=>{
-          console.log('POST elf failed', error);
+          console.log('POST failed', error);
           res.sendStatus(500);
       });
     } else {

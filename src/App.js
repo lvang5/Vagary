@@ -12,7 +12,6 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import LandingPage from './components/LandingPage/LandingPage.js';
 import CarForm from './components/CarForm/CarForm.js';
 import ViewCars from './components/ViewCars/ViewCars.js'
-import CarInfo from './components/CarInfo/CarInfo.js';
 import StartRide from './components/StartRide/StartRide.js';
 import RideHistory from './components/RideHistory/RideHistory.js';
 import Feedback from './components/Feedback/Feedback.js';
@@ -50,10 +49,6 @@ const App = () => (
         <Route
           path="/view"
           component={ViewCars}
-        />
-        <Route
-          path="/carinfo"
-          component={CarInfo}
         />
         <Route
           path="/start"

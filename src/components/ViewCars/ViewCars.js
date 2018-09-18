@@ -27,7 +27,7 @@ class ViewCars extends Component {
 
 
   handleClick = () => {
-    this.props.history.push('carinfo');
+    // this.props.history.push('carinfo');
   }
   render() {
     console.log(this.props.car);

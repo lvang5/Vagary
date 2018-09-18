@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 import user from './userReducer';
 import login from './loginReducer';
-import locationReducer from './locationReducer';
+import addCarReducer from './addCarReducer';
 import carReducer from './carReducer';
 
 const store = combineReducers({
   user,
   login,
-  locationReducer,
+  addCarReducer,
   carReducer,
 });
 

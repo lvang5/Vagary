@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-
+import axios from 'axios';
+import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
@@ -13,45 +13,54 @@ class CarForm extends Component {
   constructor() {
     super()
     this.state = {
-      car: { make: '',
-      model: '',
-      color: '',
-      year: '',
-      city: '',
-      state: '',
-      latitude: '',
-      longitude: '',
+      newCar: {
+        make: '',
+        model: '',
+        color: '',
+        year: '',
+        city: '',
+        state: '',
+        image: '',
+        latitude: '',
+        longitude: '',
 
 
       }
     }
   }
-  // componentDidMount() {
-  //   this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
-  // }
 
-  // componentDidUpdate() {
-  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
-  //     this.props.history.push('home');
-  //   }
-  // }
+
+  handleChange = (event) => {
+    this.setState({
+      newCar: {
+        ...this.state.newCar,
+        [event.target.name]: event.target.value,
+      }
+    });
+
+
+  }
+
+
 
   render() {
-    // let content = null;
-
-    // if (this.props.user.userName) {
-    //   content = (
-    //     <div>
-    //       <p>
-    //        Rent your car
-    //       </p>
-    //     </div>
-    //   );
-    // }
 
 
-    this.sendForm = () => {
-      this.props.history.push('home');
+
+    this.sendForm = (event) => {
+      event.preventDefault();
+      this.props.dispatch({ type: 'ADD_CAR', payload: this.state.newCar })
+      axios({
+        method: 'POST',
+        url: '/api/cars',
+        data: { newCar: this.state.newCar }
+      }).then((response) => {
+        console.log('success with POST');
+      }).catch((error) => {
+        console.log(error);
+        alert('unable to add car');
+      })
+      // this.props.history.push('home');
     }
 
     return (
@@ -59,14 +68,15 @@ class CarForm extends Component {
         <h1> Car Form </h1>
         <form onSubmit={this.sendForm}>
           {/* get input values */}
-          <input placeholder="Make" /> <br />
-          <input placeholder="Model" /> <br />
-          <input placeholder="Color" /> <br />
-          <input placeholder="Year" /> <br />
-          <input placeholder="City" /> <br />
-          <input placeholder="State" /> <br />
-          <input placeholder="Latitude" /> <br />
-          <input placeholder="Longitude" /> <br />
+          <input onChange={this.handleChange} type="text" name="make" placeholder="Make" /> <br />
+          <input onChange={this.handleChange} type="text" name="model" placeholder="Model" /> <br />
+          <input onChange={this.handleChange} type="text" name="color" placeholder="Color" /> <br />
+          <input onChange={this.handleChange} type="number" name="year" placeholder="Year" /> <br />
+          <input onChange={this.handleChange} type="text" name="city" placeholder="City" /> <br />
+          <input onChange={this.handleChange} type="text" name="state" placeholder="State" /> <br />
+          <input onChange={this.handleChange} type="text" name="image" placeholder="image path" /> <br />
+          <input onChange={this.handleChange} type="text" name="latitude" placeholder="Latitude" /> <br />
+          <input onChange={this.handleChange} type="text" name="longitude" placeholder="Longitude" /> <br />
           {/* move button to far right */}
           <input type="submit" />
         </form>
