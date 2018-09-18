@@ -9,7 +9,7 @@ class CarInfo extends Component {
     return (
       <div>
         Car info page
-        <button onClick={this.handleClick}>Submit</button>
+        <button onClick={this.handleClick}>Continue to Checkout</button>
       </div>
     )
   }

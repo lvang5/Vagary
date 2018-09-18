@@ -19,8 +19,8 @@ class LandingPage extends Component {
   }
 
   handleClick = () => {
-    this.props.dispatch({ type: 'SET_LOCATION', payload: this.state})
-    // this.props.history.push('view');
+    this.props.dispatch({ type: 'FIND_LOCATION', payload: this.state})
+    this.props.history.push('view');
     //here is where we put dispatch to reducer
    
   }
