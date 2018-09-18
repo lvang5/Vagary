@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
 class LandingPage extends Component {
   constructor() {
     super()
-    this.state = { location: '' }
+    this.state = { location: ''}
   }
 
-  handleClick = () => {
-    // this.props.history.push('view');
-    //here is where we do our axios request
-  }
+
 
   handleInput = (event) => {
     //this takes in the value input
@@ -20,12 +18,21 @@ class LandingPage extends Component {
      
   }
 
+  handleClick = () => {
+    this.props.dispatch({ type: 'SET_LOCATION', payload: this.state})
+    // this.props.history.push('view');
+    //here is where we put dispatch to reducer
+   
+  }
+
   render() {
+    
+    
     return (
       
       <div>
         Welcome to the landing page
-         <input placeholder="e.g. City, State, Zipcode" onBlur={this.handleChange}/>
+         <input placeholder="e.g. City, State, Zipcode" onBlur={this.handleInput}/>
         <button onClick={this.handleClick}>Submit</button>
         {/* Find image for backgroud */}
         <div>
@@ -54,5 +61,5 @@ class LandingPage extends Component {
 }
 
 
-export default (LandingPage);
+export default connect()(LandingPage);
 
