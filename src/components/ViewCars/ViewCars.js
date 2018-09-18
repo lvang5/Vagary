@@ -27,23 +27,23 @@ class ViewCars extends Component {
 
 
   handleClick = () => {
-    // this.props.history.push('carinfo');
+    this.props.history.push('carinfo');
   }
   render() {
-    console.log(this.props.car.map);
+    console.log(this.props.car);
     
     return (
       <div>
         
         
-            {/* <Grid onClick={this.handleClick} container justify="space-around" alignItems="center" style={{marginTop: '20px'}}>
-            {this.props.car.map((vehicle)=> {
+            <Grid onClick={this.handleClick} container justify="space-around" alignItems="center" style={{marginTop: '20px'}}>
+            {this.props.car.map((vehicle, i)=> {
               return(
               <Grid key={vehicle.id} >
               <Card>
                 <CardMedia image={vehicle.image_path}
                 style={{height: '200px',
-                        width: '350px' 
+                        width: '400px' 
                         }}/>
                 <CardContent>
                   <Typography variant="body1">
@@ -55,12 +55,14 @@ class ViewCars extends Component {
                 </CardActions>
               </Card>
             </Grid>
+                
+
             );
          
               
             })}
             
-      </Grid> */}
+      </Grid>
       </div>
     )
   }
