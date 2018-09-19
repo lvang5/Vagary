@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
                           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
       pool.query(queryText, [req.user.id, carToAdd.make, carToAdd.model,
                              carToAdd.color, carToAdd.year, carToAdd.city,
-                             carToAdd.city, carToAdd.state, carToAdd.image_path,
+                             carToAdd.state, carToAdd.image_path,
                              carToAdd.latitude, carToAdd.longitude])
       .then((results) =>{
           res.send(results.rows);
