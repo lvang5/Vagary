@@ -6,14 +6,16 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
+    console.log(req.query.city);
     if (req.isAuthenticated()) {
-        const queryText = `SELECT * FROM "car";`;
-        pool.query(queryText)
+        const queryText = `SELECT * FROM "car" WHERE "city" ILIKE $1;`;
+        pool.query(queryText, [req.query.city])
             .then(response => res.send(response.rows))
              .catch(error => res.sendStatus(500));
     } else {
         res.sendStatus(401);
     }
+
 });
 
 

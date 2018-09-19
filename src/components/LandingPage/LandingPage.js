@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 
 class LandingPage extends Component {
@@ -19,10 +20,24 @@ class LandingPage extends Component {
   }
 
   handleClick = () => {
-    this.props.history.push('view');
+   
+      axios.get(`/api/cars/?city=` + this.state.location)
+      .then(response => {
+        console.log(response.data);
+        this.props.dispatch({type: 'SET_CAR', payload: response.data})
+      }).catch(error => {
+        console.log(error);
+        this.props.history.push('home');
+      });
+    
+
+  
+      this.props.history.push('view');
     //here is where we put dispatch to reducer
    
   }
+ 
+
 
   render() {
     
@@ -31,7 +46,7 @@ class LandingPage extends Component {
       
       <div>
         Welcome to the landing page
-         <input placeholder="e.g. City, State, Zipcode" onBlur={this.handleInput}/>
+         <input placeholder="e.g. City" onBlur={this.handleInput}/>
         <button onClick={this.handleClick}>Submit</button>
         {/* Find image for backgroud */}
         <div>

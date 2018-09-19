@@ -6,23 +6,7 @@ import { connect } from 'react-redux';
 
 class ViewCars extends Component {
 
-  getCars = () => {
-    axios.get('/api/cars')
-    .then(response => {
-      const action = {
-        type: 'SET_CAR',
-        payload: response.data
-      };
-      this.props.dispatch(action);
-    }).catch(error => {
-      console.log(error);
-      // this.props.history.push('home');
-    });
-  };
 
-  componentDidMount() {
-    this.getCars();
-  }
 
 
 
@@ -35,11 +19,11 @@ class ViewCars extends Component {
     return (
       <div>
         
-        
+      
             <Grid onClick={this.handleClick} container justify="space-around" alignItems="center" style={{marginTop: '20px'}}>
             {this.props.car.map((vehicle, i)=> {
               return(
-              <Grid key={vehicle.id} >
+              <Grid key={i} >
               <Card>
                 <CardMedia image={vehicle.image_path}
                 style={{height: '200px',
@@ -62,13 +46,14 @@ class ViewCars extends Component {
               
             })}
             
-      </Grid>
+      </Grid> 
       </div>
     )
   }
 }
 const mapReduxStateToProps = (reduxState) => ({
-  car: reduxState.carReducer
+  car: reduxState.carReducer,
+
 });
 
 export default connect(mapReduxStateToProps)(ViewCars);

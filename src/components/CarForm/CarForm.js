@@ -20,7 +20,7 @@ class CarForm extends Component {
         year: '',
         city: '',
         state: '',
-        image: '',
+        image_path: '',
         latitude: '',
         longitude: '',
 
@@ -60,7 +60,7 @@ class CarForm extends Component {
         console.log(error);
         alert('unable to add car');
       })
-      // this.props.history.push('home');
+      this.props.history.push('home');
     }
 
     return (
@@ -74,7 +74,7 @@ class CarForm extends Component {
           <input onChange={this.handleChange} type="number" name="year" placeholder="Year" /> <br />
           <input onChange={this.handleChange} type="text" name="city" placeholder="City" /> <br />
           <input onChange={this.handleChange} type="text" name="state" placeholder="State" /> <br />
-          <input onChange={this.handleChange} type="text" name="image" placeholder="image path" /> <br />
+          <input onChange={this.handleChange} type="text" name="image_path" placeholder="image path" /> <br />
           <input onChange={this.handleChange} type="text" name="latitude" placeholder="Latitude" /> <br />
           <input onChange={this.handleChange} type="text" name="longitude" placeholder="Longitude" /> <br />
           {/* move button to far right */}
