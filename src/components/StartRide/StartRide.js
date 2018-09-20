@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import Clock from 'react-live-clock';
 import moment from 'moment';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 //moment().format(); takes in current time 
 //setInterval pass in a function, 1000 millesec
 //goes into the saga
@@ -11,12 +13,13 @@ import moment from 'moment';
 //.diff
 // call the state. 
 // create a state fo end time
-//re declare on component when end 
+//re declare on
 
-
-
-import { USER_ACTIONS } from '../../redux/actions/userActions';
 let clockInterval;
+let curTime;
+
+
+
 
 
 const mapStateToProps = state => ({
@@ -29,7 +32,8 @@ class StartRide extends Component {
   constructor() {
     super();
     this.state = { 
-      timeElapsed: null,
+      showTime: false,
+      timeElapsed: 0,
       startTime: null,
       endTime: null,
          }
@@ -40,13 +44,6 @@ class StartRide extends Component {
     clockInterval = setInterval(this.update, 1000)
   }
 
-  //put calls
-
-  componentWillUnmount = () => {
-    clearInterval(clockInterval)
-}
-
-
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
@@ -54,26 +51,32 @@ class StartRide extends Component {
     }
   }
   handleEnd = () => {
+    this.setState({
+      // showTime: false,
+      endTime: moment().format()
+        
+    })
+    clearInterval(clockInterval);
     // this.props.history.push('history');
 
   }
 
   handleStart = () => {
     this.setState({
+      showTime: true,
       startTime: moment().format()
     })
   }
 
-
   update = () => {
     let duration = moment().diff(this.state.startTime)
-    let formattedDuration = this.formatRaceTime(duration)
+    let formattedDuration = this.formatTime(duration)
     this.setState({
         timeElapsed: formattedDuration
     })
 }
 
-  formatRaceTime = (duration) => {
+  formatTime = (duration) => {
     let s = Math.floor( (duration/1000) % 60 );
     let m = Math.floor( (duration/1000/60) % 60 );
     let h = Math.floor(duration/(1000*60*60));
@@ -90,8 +93,14 @@ class StartRide extends Component {
 
 
   render() {
-
+    console.log(this.state.startTime, this.state.endTime);
     
+
+    if (this.state.showTime) {
+   
+     
+      curTime =  this.state.timeElapsed
+    }
     return (
       <div>
 
@@ -103,11 +112,11 @@ class StartRide extends Component {
         Start your ride now!
 
         <br />
-      
+        {this.state.timer}
           
         <button onClick={this.handleStart}>Start Your Ride</button>
         <button onClick={this.handleEnd} >End Ride</button>
-          {this.state.timeElapsed}
+        <div>{curTime}</div>
       </div>
     )
   }
@@ -115,3 +124,6 @@ class StartRide extends Component {
 
 
 export default connect(mapStateToProps)(StartRide);
+
+
+
