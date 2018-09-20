@@ -7,14 +7,14 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
     console.log(req.query.city);
-    if (req.isAuthenticated()) {
+    // if (req.isAuthenticated()) {
         const queryText = `SELECT * FROM "car" WHERE "city" ILIKE $1;`;
         pool.query(queryText, [req.query.city])
             .then(response => res.send(response.rows))
              .catch(error => res.sendStatus(500));
-    } else {
-        res.sendStatus(401);
-    }
+    // } else {
+    //     res.sendStatus(401);
+    // }
 
 });
 
