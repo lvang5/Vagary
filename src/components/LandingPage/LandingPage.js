@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import Avatar from '@material-ui/core/Avatar';
+
 
 
 class LandingPage extends Component {
@@ -61,9 +63,9 @@ class LandingPage extends Component {
            {/* Mission Statement */}
           </div>
           <div>
-            some text for how
-  
-          </div>
+      <Avatar alt="Lais Vang" src="https://avatars1.githubusercontent.com/u/38891207?s=460&v=4"  />
+    
+    </div>
           <div>
             some text
           </div>

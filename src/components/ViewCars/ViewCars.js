@@ -19,8 +19,8 @@ class ViewCars extends Component {
     return (
       <div>
         
-      
-            <Grid onClick={this.handleClick} container justify="space-around" alignItems="center" style={{marginTop: '20px'}}>
+      {/* space around cards */}
+            <Grid onClick={this.handleClick} container spacing="25px" justify="space-around" alignItems="center" style={{marginTop: '20px'}}>
             {this.props.car.map((vehicle, i)=> {
               return(
               <Grid key={i} >
