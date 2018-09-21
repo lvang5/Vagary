@@ -3,7 +3,7 @@ import { Grid, Card, CardActions, CardContent, CardMedia, Button, Typography, Di
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-
+//
 class ViewCars extends Component {
   state = {
     open: false,
@@ -23,6 +23,9 @@ class ViewCars extends Component {
   }
   render() {
     const { fullScreen } = this.props;
+    console.log(this.props.car);
+    
+
 
     return (
       <div>
@@ -38,11 +41,7 @@ class ViewCars extends Component {
                 >
                   <DialogTitle id="responsive-dialog-title">{vehicle.make} {vehicle.model}</DialogTitle>
                   <DialogContent>
-                    <DialogContentText image={vehicle.image_path}
-                    style={{
-                      height: '200px',
-                      width: '400px'
-                    }} >
+                    <DialogContentText  >
                       {vehicle.color}
             </DialogContentText>
                   </DialogContent>

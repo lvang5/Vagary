@@ -76,7 +76,9 @@ class Feedback extends Component {
         
     <Button variant="extendedFab" aria-label="Delete" onClick={this.SubmitForm}> Submit</Button>
         </FormControl>
-
+          <p>
+            {JSON.stringify(this.props.start[0])}
+            </p>
     
 
       </div>
