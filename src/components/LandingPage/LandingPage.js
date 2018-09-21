@@ -82,8 +82,8 @@ class LandingPage extends Component {
       height: 100,}} />
       <h3>Founder</h3>
         Hello, I'm Lais a second generation Hmong American pursing my dream of making a difference in the vast world of technology.
-         As a step towards my dream to make a difference one application at a time I've decided to create my very first full-stack application, Vagary, where a roaming journey starts.
-         Enjoy your visit here and please let me know what you think by leaving some feedback.  
+         I plan to make a difference by developing one application at a time. I've decided to create my very first full-stack application called Vagary, where a roaming journey starts.
+         Enjoy your visit here and please let me know what you think by leaving me some feedback.  
 
         
    

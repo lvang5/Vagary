@@ -1,75 +1,89 @@
 import React, { Component } from 'react';
-import {Grid, Card, CardActions, CardContent, CardMedia, Button, Typography, Modal } from '@material-ui/core';
+import { Grid, Card, CardActions, CardContent, CardMedia, Button, Typography, Dialog, fullScreen, DialogActions, DialogContent, DialogTitle, DialogContentText } from '@material-ui/core';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
 
 class ViewCars extends Component {
-  constructor(){
-    super()
-      this.state = {open: false}
-    
-  }
+  state = {
+    open: false,
+  };
 
-
-
-  handleOpen = () => {
+  handleClickOpen = () => {
     this.setState({ open: true });
   };
 
   handleClose = () => {
     this.setState({ open: false });
   };
+
   handleClick = () => {
 
-    // this.props.history.push('start');
+    this.props.history.push('start');
   }
   render() {
-    console.log(this.props.car);
-    
+    const { fullScreen } = this.props;
+
     return (
       <div>
-
-
-                 <Grid onClick={this.handleClick} container justify="space-around" alignItems="flex-end" style={{marginTop: '20px'}}>
-            {this.props.car.map((vehicle, i)=> {
-              return(
+        <Grid container justify="space-around" alignItems="flex-end" style={{ marginTop: '20px' }}>
+          {this.props.car.map((vehicle, i) => {
+            return (
               <Grid key={i} >
-              <Card>
-                <CardMedia image={vehicle.image_path}
-                style={{height: '200px',
-                        width: '400px' 
-                        }}/>
-                <CardContent>
-                  <Typography variant="body1">
-                        {vehicle.make} {vehicle.model}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button >View Car</Button>
-                </CardActions>
-              </Card>
-            </Grid>
-                
+                <Dialog
+                  fullScreen={fullScreen}
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                  aria-labelledby="responsive-dialog-title"
+                >
+                  <DialogTitle id="responsive-dialog-title">{vehicle.make} {vehicle.model}</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText image={vehicle.image_path}
+                    style={{
+                      height: '200px',
+                      width: '400px'
+                    }} >
+                      {vehicle.color}
+            </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={this.handleClose} color="primary">
+                      Close
+            </Button>
+                    <Button onClick={this.handleClick} color="primary" autoFocus>
+                      Rent!
+            </Button>
+                  </DialogActions>
+                </Dialog>
+                <Card>
+                  <CardMedia image={vehicle.image_path}
+                    style={{
+                      height: '200px',
+                      width: '400px'
+                    }} />
+                  <CardContent>
+                    <Typography variant="body1">
+                      {vehicle.make} {vehicle.model}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button onClick={this.handleClickOpen}>View Car</Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+
+
 
             );
-         
-              
-            })}
-            
-      </Grid>
-              <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
-        >
-          <div >
-     
-          </div>
-        </Modal>
-      {/* space around cards */}
-           
+
+
+          })}
+
+        </Grid>
+
+
+        {/* space around cards */}
+
       </div>
     )
   }
@@ -80,3 +94,5 @@ const mapReduxStateToProps = (reduxState) => ({
 });
 
 export default connect(mapReduxStateToProps)(ViewCars);
+
+

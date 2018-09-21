@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 class Feedback extends Component {
   SubmitForm = () => {
     this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
-    // this.props.history.push('home');
+    
   }
 
   constructor() {
@@ -30,6 +30,10 @@ class Feedback extends Component {
     this.setState({ review: event.target.value,
                    });
   };
+
+  handleRoute = () => {
+    this.props.history.push('home');
+  }
   render() {
 
     console.log(this.state)
@@ -42,8 +46,8 @@ class Feedback extends Component {
         
         <FormControl component="fieldset" >
         <FormLabel component="h1">Would you like to leave some feedback?</FormLabel>
-          <RadioGroup   aria-label="Gender"
-            name="gender1"
+          <RadioGroup   aria-label="feedback"
+            name="feedback"
             
             value={this.state.rating}
             onChange={this.handleChange}>
@@ -68,7 +72,9 @@ class Feedback extends Component {
           
        
         <br/>
-        <Button variant="extendedFab" aria-label="Delete" onClick={this.SubmitForm}> Submit</Button>
+        <Button variant="extendedFab" aria-label="Delete" onClick={this.handleRoute}> Exit  </Button>
+        
+    <Button variant="extendedFab" aria-label="Delete" onClick={this.SubmitForm}> Submit</Button>
         </FormControl>
 
     
