@@ -8,7 +8,7 @@ body {
 }
 
 .instructions {
-    background-color: #00acb0;
+    background-color: darkslategray;
     padding: 5px;
     color: #ece7e7;
 }
@@ -47,11 +47,10 @@ input[type="submit"] {
     background-color: #f8f8f8;
 }
 
-.navbar {
-  background-color: #00acb0;
+/* .navbar {
   width: 100%;
   border-radius: 0px;
-}
+} */
 
 ul {
     list-style-type: none;
@@ -144,6 +143,4 @@ li a:hover {
 
 }
 
-.avatar {
-    
-}
+

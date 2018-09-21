@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
-import {Grid, Card, CardActions, CardContent, CardMedia, Button, Typography} from '@material-ui/core';
+import {Grid, Card, CardActions, CardContent, CardMedia, Button, Typography, Modal } from '@material-ui/core';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
 
 class ViewCars extends Component {
+  constructor(){
+    super()
+      this.state = {open: false}
+    
+  }
 
 
 
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
 
-
+  handleClose = () => {
+    this.setState({ open: false });
+  };
   handleClick = () => {
-    this.props.history.push('start');
+
+    // this.props.history.push('start');
   }
   render() {
     console.log(this.props.car);
     
     return (
       <div>
-        
-      {/* space around cards */}
-            <Grid onClick={this.handleClick} container spacing="25px" justify="space-around" alignItems="center" style={{marginTop: '20px'}}>
+
+
+                 <Grid onClick={this.handleClick} container justify="space-around" alignItems="flex-end" style={{marginTop: '20px'}}>
             {this.props.car.map((vehicle, i)=> {
               return(
               <Grid key={i} >
@@ -35,7 +46,7 @@ class ViewCars extends Component {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button>View Car</Button>
+                  <Button >View Car</Button>
                 </CardActions>
               </Card>
             </Grid>
@@ -46,7 +57,19 @@ class ViewCars extends Component {
               
             })}
             
-      </Grid> 
+      </Grid>
+              <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <div >
+     
+          </div>
+        </Modal>
+      {/* space around cards */}
+           
       </div>
     )
   }

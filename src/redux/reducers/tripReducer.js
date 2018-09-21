@@ -1,7 +1,7 @@
 const tripReducer = (state = [], action) => {
     switch(action.type){
         case 'ADD_DATA':
-        return action.payload;
+        return [...state, action.payload];
     default:
         return state;
     }

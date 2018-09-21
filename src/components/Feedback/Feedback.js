@@ -1,31 +1,85 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {FormControlLabel, FormControl, RadioGroup, Radio, FormLabel, Button, TextField} from '@material-ui/core';
+import {connect} from 'react-redux';
 
-export default class Feedback extends Component {
+
+
+
+class Feedback extends Component {
   SubmitForm = () => {
-    this.props.history.push('home');
+    this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
+    // this.props.history.push('home');
   }
+
+  constructor() {
+    super()
+    this.state = {rating:'',
+                  review: '',
+                  start_time: '',
+                  end_time: '',
+                  // end_time: this.props.start[0].end_time,
+
+    }
+  }
+
+  handleChange = event => {
+    this.setState({ rating: event.target.value });
+  };
+
+  handleReview = event => {
+    this.setState({ review: event.target.value,
+                   });
+  };
   render() {
 
-   
+    console.log(this.state)
 
     return (
+      
+      
       <div>
-
-
-        Leave us with some feedback
-        <form onSubmit={this.SubmitForm}>
-          <input type="radio" value="male" checked /> 1
-          <input type="radio" value="female" /> 2
-          <input type="radio" value="other" /> 3 
-          <input type="radio" value="other" /> 4 
-          <input type="radio" value="other" /> 5<br />
         
-        <input />
-        <input type="submit"/>
         
-        </form>
+        <FormControl component="fieldset" >
+        <FormLabel component="h1">Would you like to leave some feedback?</FormLabel>
+          <RadioGroup   aria-label="Gender"
+            name="gender1"
+            
+            value={this.state.rating}
+            onChange={this.handleChange}>
+            <FormControlLabel value="1" control={<Radio />} label="1 - Needs Reinforcement" />
+            <FormControlLabel value="2" control={<Radio />} label="2 - Below expectation" />
+            <FormControlLabel value="3" control={<Radio />} label="3 - Meets Expectations" />
+            <FormControlLabel value="4" control={<Radio />} label="4 - Above meets expectation" />
+            <FormControlLabel value="5" control={<Radio />} label="5 - Exceeds Expectations" />
+            <FormControlLabel control={<TextField onBlur={this.handleReview} id="outlined-full-width"
+          label="Comments"
+          style={{ margin: 8 }}
+          placeholder="This Applicaiton is awesome"
+          width='100%'
+          margin="normal"
+          variant="outlined"
+          rowsMax="100"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />}/>
+          </RadioGroup>
+          
+       
+        <br/>
+        <Button variant="extendedFab" aria-label="Delete" onClick={this.SubmitForm}> Submit</Button>
+        </FormControl>
+
+    
+
       </div>
 
     )
   }
 }
+const mapReduxStateToProps = (reduxState) => ({
+  start: reduxState.tripReducer
+});
+
+export default connect(mapReduxStateToProps)(Feedback);

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import 'moment-timezone';
-import Clock from 'react-live-clock';
 import moment from 'moment';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 //moment().format(); takes in current time 
@@ -17,8 +16,7 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 let clockInterval;
 let timer;
-var m = moment();
-m.set({hour:0,minute:0,second:0,millisecond:0});
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -32,8 +30,8 @@ class StartRide extends Component {
     this.state = {
       showTime: true,
       timeElapsed: 0,
-      startTime: null,
-      endTime: null,
+      start_time: null,
+      end_time: null,
     }
 
   }
@@ -51,7 +49,7 @@ class StartRide extends Component {
   handleEnd = () => {
     this.setState({
       // showTime: false,
-      endTime: moment().format()
+      end_time: moment().format()
     })
     clearInterval(clockInterval);
     
@@ -60,17 +58,17 @@ class StartRide extends Component {
   handleStart = () => {
     this.setState({
       showTime: false,
-      startTime: moment().format()
+      start_time: moment().format()
     })
   }
 
   handleComplete = () => {
     this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
-    this.props.history.push('history');
+    this.props.history.push('feedback');
   }
 
   update = () => {
-    let duration = moment().diff(this.state.startTime)
+    let duration = moment().diff(this.state.start_time)
     let formattedDuration = this.formatTime(duration)
     this.setState({
       timeElapsed: formattedDuration
