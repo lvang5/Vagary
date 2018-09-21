@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import {FormControlLabel, FormControl, RadioGroup, Radio, FormLabel, Button, TextField} from '@material-ui/core';
 import {connect} from 'react-redux';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 
-
-
+const mapStateToProps = state => ({
+  user: state.user,
+});
 
 class Feedback extends Component {
   SubmitForm = () => {
     this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
-    
+    this.props.history.push('history');
   }
 
   constructor() {
@@ -19,6 +21,18 @@ class Feedback extends Component {
                   end_time: '',
                   // end_time: this.props.start[0].end_time,
 
+    }
+  }
+
+  componentDidMount() {
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+
+  }
+
+
+  ComponentDidUpdate() {
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('login');
     }
   }
 
@@ -86,8 +100,6 @@ class Feedback extends Component {
     )
   }
 }
-const mapReduxStateToProps = (reduxState) => ({
-  start: reduxState.tripReducer
-});
 
-export default connect(mapReduxStateToProps)(Feedback);
+
+export default connect(mapStateToProps)(Feedback);

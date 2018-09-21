@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-
+import {Button} from '@material-ui/core';
 const mapStateToProps = state => ({
   user: state.user,
 });
@@ -32,29 +32,33 @@ class LoginNav extends Component{
       <ul>
         <li>
           <Link to="/rent">
-            Rent your car
+            RENT CAR
           </Link>
         </li>
         <li>
           <Link to="/garage">
-            My Garage
+            GARAGE
           </Link>
         </li>
         <li>
           <Link to="/profile">
-            Profile Icon
+            PROFILE
           </Link>
         </li>
         <li>
-         <button
+         <Button
             onClick={this.logout}
+            style={{bottom:'7px',
+            textAlign: 'center',
+            float: 'left',
+            fontFamily: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,}}
           >
             <Link to="/home">
             Log Out
             {/* Change button and text */}
           </Link>
             
-          </button>
+          </Button>
         </li>
       </ul>
     </div>

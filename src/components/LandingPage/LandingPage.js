@@ -51,9 +51,6 @@ class LandingPage extends Component {
         <Grid container alignContent="flex-end">
           <img className="img" src="https://www.samsung.com/global/galaxy/galaxy-note8/images/galaxy-note8_overview_kv_type1.jpg"/>
         <div>
-      
-        
-
         <React-Component style={{  margin: '0',
  
     position: 'absolute',
@@ -71,13 +68,6 @@ class LandingPage extends Component {
         <Button  variant="outlined" onClick={this.handleClick}>Submit</Button>
         {/* Find image for backgroud */}
         </React-Component>
-    
-      
-        
-         
-
-      
-         
         <Grid item sm={6} style={{fontSize:'15px', color: 'white'}}>
         <Avatar alt="Lais Vang" src="https://avatars1.githubusercontent.com/u/38891207?s=460&v=4" style={{width: 100,
         height: 100,}} />

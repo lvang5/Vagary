@@ -5,12 +5,17 @@ body {
 .instructions h1 {
     font-size: 24px;
     font-weight: 700;
+   
 }
 
 .instructions {
     background-color:black;
     padding: 5px;
     color: #ece7e7;
+  
+
+
+   
 }
 
 form {
@@ -155,9 +160,3 @@ li a:hover {
 .container-div{
     background-color: black;
 }
-
-.founder-header{
-    
-}
-
-
