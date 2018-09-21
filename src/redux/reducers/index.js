@@ -4,6 +4,7 @@ import login from './loginReducer';
 import addCarReducer from './addCarReducer';
 import carReducer from './carReducer';
 import locationReducer from './locationReducer';
+import tripReducer from './tripReducer';
 
 const store = combineReducers({
   user,
@@ -11,6 +12,7 @@ const store = combineReducers({
   addCarReducer,
   carReducer,
   locationReducer,
+  tripReducer,
 });
 
 export default store;

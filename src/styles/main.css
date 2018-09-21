@@ -78,3 +78,30 @@ li a:hover {
     text-decoration: underline;
     color: #eee;
 }
+
+
+.stop {
+    font-size: 10px;
+    width: 140px;
+    height: 60px;
+    border-radius:5px;
+    background-color:red;
+    border-color:red;
+    position: absolute;
+    top: 50%;
+}
+
+.start {
+    font-size: 10px;
+    width: 140px;
+    height: 60px;
+    border-radius:5px;
+    background-color: green;
+    border-color:green;
+    position: absolute;
+    top: 50%;
+}
+
+.container-button {
+    text-align: center;
+}

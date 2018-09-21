@@ -32,8 +32,8 @@ class StartRide extends Component {
   constructor() {
     super();
     this.state = { 
-      showTime: false,
-      timeElapsed: 0,
+      showTime: true,
+      timeElapsed: 0 ,
       startTime: null,
       endTime: null,
          }
@@ -54,18 +54,21 @@ class StartRide extends Component {
     this.setState({
       // showTime: false,
       endTime: moment().format()
-        
     })
     clearInterval(clockInterval);
-    // this.props.history.push('history');
-
+   
   }
 
   handleStart = () => {
     this.setState({
-      showTime: true,
+      showTime: false,
       startTime: moment().format()
     })
+  }
+
+  handleComplete = () => {
+    this.props.dispatch({type: 'ADD_DATA', payload: this.state})
+    this.props.history.push('history');
   }
 
   update = () => {
@@ -93,30 +96,33 @@ class StartRide extends Component {
 
 
   render() {
-    console.log(this.state.startTime, this.state.endTime);
-    
 
-    if (this.state.showTime) {
-   
-     
-      curTime =  this.state.timeElapsed
+    let startButton = null;
+    if (this.state.showTime){
+      startButton = <button onClick={this.handleStart} className="start">Start Your Ride</button>;
+    } else {
+      startButton =  <button onClick={this.handleEnd} className="stop" >End Ride</button>
     }
+
+  
     return (
       <div>
-
+      
         
-  
+        
         <br/>
     
   	
         Start your ride now!
 
         <br />
-        {this.state.timer}
-          
-        <button onClick={this.handleStart}>Start Your Ride</button>
-        <button onClick={this.handleEnd} >End Ride</button>
-        <div>{curTime}</div>
+        <div className="container-button">
+        {startButton}
+        </div>
+        <button onClick={this.handleComplete} >Complete ride</button>
+        <br />
+        {this.state.timeElapsed}
+        
       </div>
     )
   }
