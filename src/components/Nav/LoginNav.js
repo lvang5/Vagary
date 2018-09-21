@@ -36,6 +36,11 @@ class LoginNav extends Component{
           </Link>
         </li>
         <li>
+          <Link to="/garage">
+            My Garage
+          </Link>
+        </li>
+        <li>
           <Link to="/profile">
             Profile Icon
           </Link>

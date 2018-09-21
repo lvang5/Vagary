@@ -19,6 +19,21 @@ router.get('/', (req, res) => {
 });
 
 
+//owner cars
+router.get('/owner', (req, res) => {
+  
+    if (req.isAuthenticated()) {
+        const queryText = `SELECT * FROM "car" WHERE "person_id" = $1;`;
+        pool.query(queryText, [req.user.id])
+            .then(response => res.send(response.rows))
+             .catch(error => res.sendStatus(500));
+    } else {
+        res.sendStatus(401);
+    }
+
+});
+
+
 /**
  * POST route template
  */

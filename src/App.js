@@ -15,7 +15,8 @@ import ViewCars from './components/ViewCars/ViewCars.js'
 import StartRide from './components/StartRide/StartRide.js';
 import RideHistory from './components/RideHistory/RideHistory.js';
 import Feedback from './components/Feedback/Feedback.js';
-import UserProfile from './components/UserProfile/UserProfile.js'
+import UserProfile from './components/UserProfile/UserProfile.js';
+import Garage from './components/Garage/Garage.js';
 import './styles/main.css';
 
 
@@ -61,6 +62,10 @@ const App = () => (
         <Route
           path="/feedback"
           component={Feedback}
+        />
+          <Route
+          path="/garage"
+          component={Garage}
         />
         <Route
           path="/profile"

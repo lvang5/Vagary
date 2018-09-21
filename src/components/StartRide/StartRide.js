@@ -41,7 +41,7 @@ class StartRide extends Component {
   }
 
 
-  shouldComponentDidUpdate() {
+  ComponentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('login');
     }
