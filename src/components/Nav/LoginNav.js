@@ -32,7 +32,7 @@ class LoginNav extends Component{
       <ul>
         <li>
           <Link to="/rent">
-            Rent your car!
+            Rent your car
           </Link>
         </li>
         <li>

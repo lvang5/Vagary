@@ -29,7 +29,7 @@ class StartRide extends Component {
     super();
     this.state = {
       showTime: true,
-      timeElapsed: 0,
+      timeElapsed: '00:00:00',
       start_time: null,
       end_time: null,
     }
@@ -69,6 +69,9 @@ class StartRide extends Component {
 
   update = () => {
     let duration = moment().diff(this.state.start_time)
+    if(isNaN(duration)){
+      return;
+    }
     let formattedDuration = this.formatTime(duration)
     this.setState({
       timeElapsed: formattedDuration

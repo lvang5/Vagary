@@ -79,9 +79,9 @@ class LandingPage extends Component {
          
         <Grid item sm={5} style={{marginTop:'24%', fontSize:'15px'}}>
         <Avatar alt="Lais Vang" src="https://avatars1.githubusercontent.com/u/38891207?s=460&v=4" style={{width: 100,
-      height: 100,}} />
-      <h3>Founder</h3>
-        Hello, I'm Lais a second generation Hmong American pursing my dream of making a difference in the vast world of technology.
+        height: 100,}} />
+        <h3>Founder</h3>
+        Hello, I'm Lais a second generation Hmong American pursing my passion in technology by making a difference in the vast world of technology.
          I plan to make a difference by developing one application at a time. I've decided to create my very first full-stack application called Vagary, where a roaming journey starts.
          Enjoy your visit here and please let me know what you think by leaving me some feedback.  
 
