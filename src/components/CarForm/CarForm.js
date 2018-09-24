@@ -4,6 +4,7 @@ import axios from 'axios';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { TextField } from '@material-ui/core';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { Grid, GridListTile, ListSubheader } from '@material-ui/core'
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -65,31 +66,75 @@ class CarForm extends Component {
     }
 
     return (
-      <div>
-        <h1> Car Form </h1>
-        <form onSubmit={this.sendForm}>
-          {/* get input values */}
-          <TextField onChange={this.handleChange} type="text" name="make" placeholder="make" value={this.state.make}/>
-           <br/>
-           <TextField  onChange={this.handleChange} type="text" name="model" placeholder="model" value={this.state.model}/>
-           <br/>
-           <TextField onChange={this.handleChange} type="text" name="color" placeholder="color"  value={this.state.color}/>
-           <br/>
-           <TextField onChange={this.handleChange} type="text" name="year" placeholder="year"  value={this.state.year}/>
-           <br/>
-           <TextField onChange={this.handleChange} type="text" name="city" placeholder="city"  value={this.state.city}/>
-           <br/>
-           <TextField onChange={this.handleChange} type="text" name="state" placeholder="state"  value={this.state.state}/>
-           <br/>
-           <TextField onChange={this.handleChange} type="text" name="image_path" placeholder="Image URL"  value={this.state.image_path}/>
-           <br/>
-           <TextField onChange={this.handleChange} type="text" name="latitude" placeholder="latitude"  value={this.state.latitude}/>
-           <br/>
-           <TextField onChange={this.handleChange} type="text" name="longitude" placeholder="longitude" value={this.state.longitude}/>
-          {/* move button to far right */}
-          <input type="submit" />
-        </form>
+      <div className="carForm">
 
+
+        <Grid container spacing={16} direction="column" align="center">
+
+          <ListSubheader component="h1">Car Registration</ListSubheader>
+
+          <form onSubmit={this.sendForm}>
+            {/* get input values */}
+            <Grid item xs={6}>
+              <TextField
+                label="Make"
+                margin="normal"
+                variant="outlined"
+                onChange={this.handleChange} type="text" name="make" value={this.state.make} />
+              <br />
+              <TextField
+                label="Make"
+                margin="normal"
+                variant="outlined"
+                onChange={this.handleChange} type="text" name="model" value={this.state.model} />
+              <br />
+              <TextField
+                label="Color"
+                margin="normal"
+                variant="outlined"
+                onChange={this.handleChange} type="text" name="color" value={this.state.color} />
+              <br />
+              <TextField
+                label="Year"
+                margin="normal"
+                variant="outlined"
+                onChange={this.handleChange} type="text" name="year" value={this.state.year} />
+              <br />
+              <TextField
+                label="City"
+                margin="normal"
+                variant="outlined"
+                onChange={this.handleChange} type="text" name="city" value={this.state.city} />
+              <br />
+              <TextField
+                label="State"
+                margin="normal"
+                variant="outlined"
+                onChange={this.handleChange} type="text" name="state" value={this.state.state} />
+              <br />
+              <TextField
+                label="Image URL"
+                margin="normal"
+                variant="outlined"
+                onChange={this.handleChange} type="text" name="image_path" value={this.state.image_path} />
+              <br />
+              <TextField
+                label="Latitude"
+                margin="normal"
+                variant="outlined"
+                onChange={this.handleChange} type="text" name="latitude" value={this.state.latitude} />
+              <br />
+              <TextField
+                label="Longitude"
+                margin="normal"
+                variant="outlined"
+                onChange={this.handleChange} type="text" name="longitude" value={this.state.longitude} />
+              {/* move button to far right */}
+              <input type="submit" />
+            </Grid>
+          </form>
+
+        </Grid>
         {/* { content } */}
       </div>
     );

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-
+import {Avatar, Grid, TextField, Button, ListSubheader} from '@material-ui/core';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -54,7 +54,7 @@ class LoginPage extends Component {
           className="alert"
           role="alert"
         >
-          { this.props.login.message }
+          {this.props.login.message}
         </h2>
       );
     }
@@ -63,39 +63,59 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
-        { this.renderAlert() }
-        <form onSubmit={this.login}>
-          <h1>Login</h1>
+      <div className="login-div">
+{/* <img className="loginImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJCb7W0hQgI-NoucbTfXnLzrSNzTIL7uhgQofDLkjgwoeaij0e"/> */}
+        {this.renderAlert()}
+        <form onSubmit={this.login} className="login">
+        
           <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              type="submit"
+          
+          <ListSubheader component="h1" style={{margin: '0',
+            position: 'absolute',
+            top: '35%',
+            left: '44%',
+            marginRight: '-50%',
+            transform: ('-50%', '-50%'),
+            color:'black',
+            fontSize:'3em'}}>Login</ListSubheader>
+          <React-Component style={{
+            margin: '0',
+            position: 'absolute',
+            top: '40%',
+            left: '40%',
+            marginRight: '-50%',
+            transform: ('-50%', '-50%')
+          }}>
+          Username:<TextField
+               type="text"
+               name="username"
+               margin="normal"
+              variant="outlined"
+               value={this.state.username}
+               onChange={this.handleInputChangeFor('username')}
+            />
+            <br/>
+            Password: <TextField
+               type="password"
+               name="password"
+               value={this.state.password}
+               onChange={this.handleInputChangeFor('password')}
+              margin="normal"
+              variant="outlined"
+            />
+            <br/>
+            {/* <Input placeholder="e.g. City" /> */}
+            <Link to="/register" style={{ margin: '0'}}>Register</Link>
+           <br/>
+           <br/>
+            
+            {/* Find image for backgroud */}
+            <Button variant="outlined"  type="submit"
               name="submit"
               value="Log In"
-            />
-            <Link to="/register">Register</Link>
+  style={{margin:'0'}}>Submit</Button>
+          </React-Component>
+            
           </div>
         </form>
       </div>
