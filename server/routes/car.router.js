@@ -62,6 +62,28 @@ router.post('/', (req, res) => {
 });
 
 
+router.post('/feedback', (req, res) => {
+    console.log(req.body);
+    if(req.isAuthenticated()) {
+      const tripToAdd = req.body;
+      const queryText = `INSERT INTO "trip" ("person_id","car_id", "rating", "review", "start_time",
+                         "end_time")
+                          VALUES ($1, $2, $3, $4, $5, $6)`;
+      pool.query(queryText, [req.user.id, tripToAdd.car_id, tripToAdd.rating, tripToAdd.review,
+                             tripToAdd.start_time, tripToAdd.end_time])
+      .then((results) =>{
+          res.send(results.rows);
+      }).catch((error)=>{
+          console.log('POST failed', error);
+          res.sendStatus(500);
+      });
+    } else {
+        res.sendStatus(403);
+    }
+      
+});
+
+
 router.delete('/:id', (req, res) => {
     const idOfCartoDelete = req.params.id;
       console.log('deleting ', idOfCartoDelete);

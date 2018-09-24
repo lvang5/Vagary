@@ -20,6 +20,7 @@ let timer;
 
 const mapStateToProps = state => ({
   user: state.user,
+  car: state.tripReducer.currentVehicle.car_id
 });
 
 
@@ -32,12 +33,16 @@ class StartRide extends Component {
       timeElapsed: '00:00:00',
       start_time: null,
       end_time: null,
+      car: null,
     }
 
   }
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     clockInterval = setInterval(this.update, 1000)
+    this.setState({
+      car: this.props.car
+    })
   }
 
 
@@ -131,7 +136,7 @@ class StartRide extends Component {
         {/* </div> */}
         
         <br />
-
+     
       </div>
     )
   }

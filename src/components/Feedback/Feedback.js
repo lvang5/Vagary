@@ -2,16 +2,28 @@ import React, { Component } from 'react';
 import {FormControlLabel, FormControl, RadioGroup, Radio, FormLabel, Button, TextField} from '@material-ui/core';
 import {connect} from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import axios from 'axios';
 
 const mapStateToProps = state => ({
   user: state.user,
   start: state.tripReducer,
-  end: state.tripReducer
+  end: state.tripReducer,
+  currentCar: state.tripReducer
 });
 
 class Feedback extends Component {
   SubmitForm = () => {
     this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
+    axios({
+      method: 'POST',
+      url: '/api/cars/feedback',
+      data: this.state
+    }).then((response) => {
+      console.log('success with POST');
+    }).catch((error) => {
+      console.log(error);
+      alert('unable to add car');
+    })
     this.props.history.push('history');
   }
 
@@ -20,8 +32,8 @@ class Feedback extends Component {
     this.state = {rating:'',
                   review: '',
                  start_time: '',
-                  // end_time: '',
-                  // end_time: this.props.start[0].end_time,
+                  end_time: '',
+                  car_id: '',
 
     }
   }
@@ -30,7 +42,8 @@ class Feedback extends Component {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.setState({
       start_time: this.props.start.start_time,
-      end_time: this.props.end.end_time
+      end_time: this.props.end.end_time,
+      car_id: this.props.currentCar.car
     })
   }
 
@@ -96,6 +109,8 @@ class Feedback extends Component {
         <br/>
         <Button variant="contained" color="secondary" aria-label="Delete" onClick={this.handleRoute}> No, I would not like to leave any feedback </Button>
         </FormControl>
+
+        
       </div>
 
     )

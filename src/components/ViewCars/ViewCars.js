@@ -12,7 +12,7 @@ function Transition(props) {
 class ViewCars extends Component {
   state = {
     open: false,
-    currentVehicle:{}
+    currentVehicle:{},
   };
 
 
@@ -25,12 +25,14 @@ class ViewCars extends Component {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('login');
     }
+   
   }
 
 
   handleOpen = (vehicle) => {
     this.setState({ open: !this.state.open,
-    currentVehicle: vehicle });
+    currentVehicle: vehicle
+    });
   };
 
   handleClose = () => {
@@ -38,6 +40,7 @@ class ViewCars extends Component {
   };
 
   handleClick = () => {
+    this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
     this.props.history.push('start');
   };
 
