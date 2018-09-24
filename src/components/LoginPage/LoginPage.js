@@ -63,8 +63,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="login-div">
-{/* <img className="loginImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJCb7W0hQgI-NoucbTfXnLzrSNzTIL7uhgQofDLkjgwoeaij0e"/> */}
+      <div className="loginDiv">
         {this.renderAlert()}
         <form onSubmit={this.login} className="login">
         
@@ -77,7 +76,8 @@ class LoginPage extends Component {
             marginRight: '-50%',
             transform: ('-50%', '-50%'),
             color:'black',
-            fontSize:'3em'}}>Login</ListSubheader>
+            fontSize:'3em',
+            fontFamily: 'Tahoma, Geneva, sans-serif'}}>Login</ListSubheader>
           <React-Component style={{
             margin: '0',
             position: 'absolute',
@@ -86,7 +86,7 @@ class LoginPage extends Component {
             marginRight: '-50%',
             transform: ('-50%', '-50%')
           }}>
-          Username:<TextField
+        Username:<TextField
                type="text"
                name="username"
                margin="normal"

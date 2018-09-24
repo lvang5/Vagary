@@ -2,31 +2,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-/* .instructions h1 {
-    font-size: 24px;
-    font-weight: 700;
-   
-} */
+
 
 .instructions {
-    background-color:black;
-    padding: 5px;
     color: #ece7e7;
 }
-/* 
-form {
-    background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 2px;
-} */
 
-input {
-    margin: 5px;
-    margin-bottom: 10px;
-}
+
+
 
 input[type="submit"] {
     margin: 10px;
@@ -153,9 +136,6 @@ li a:hover {
     -webkit-border-radius: 92px 98px 98px 98px;
 }
 
-.container-div{
-    background-color: black;
-}
 
 
 .login{
@@ -175,6 +155,9 @@ li a:hover {
  
 }
 
-.login-div{
-    background-color: black;
+html body{
+    background: rgb(209,43,43);
+    background: radial-gradient(circle, rgba(209,43,43,1) 0%, rgba(108,113,115,1) 100%);
+    font-family: Tahoma, Geneva, sans-serif;
+
 }

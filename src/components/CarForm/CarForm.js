@@ -4,7 +4,7 @@ import axios from 'axios';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { TextField } from '@material-ui/core';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import { Grid, GridListTile, ListSubheader } from '@material-ui/core'
+import { Grid, GridListTile, ListSubheader, Paper } from '@material-ui/core'
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -70,12 +70,13 @@ class CarForm extends Component {
 
 
         <Grid container spacing={16} direction="column" align="center">
-
-          <ListSubheader component="h1">Car Registration</ListSubheader>
-
+        
+ 
           <form onSubmit={this.sendForm}>
             {/* get input values */}
             <Grid item xs={6}>
+            <Paper style={{width: '350px', marginLeft:'-45%'}}>
+            <ListSubheader component="h1" style={{fontSize: '2em', color: 'black'}}>Car Registration</ListSubheader>
               <TextField
                 label="Make"
                 margin="normal"
@@ -83,7 +84,7 @@ class CarForm extends Component {
                 onChange={this.handleChange} type="text" name="make" value={this.state.make} />
               <br />
               <TextField
-                label="Make"
+                label="Model"
                 margin="normal"
                 variant="outlined"
                 onChange={this.handleChange} type="text" name="model" value={this.state.model} />
@@ -131,6 +132,7 @@ class CarForm extends Component {
                 onChange={this.handleChange} type="text" name="longitude" value={this.state.longitude} />
               {/* move button to far right */}
               <input type="submit" />
+              </Paper>
             </Grid>
           </form>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Grid, GridListTile, ListSubheader, TextField, OutlinedInput, Input } from '@material-ui/core'
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -10,6 +11,10 @@ class RegisterPage extends Component {
       username: '',
       password: '',
       message: '',
+      first: '',
+      last: '',
+      email: '',
+      profile_picture: '',
     };
   }
 
@@ -24,13 +29,17 @@ class RegisterPage extends Component {
       const body = {
         username: this.state.username,
         password: this.state.password,
+        first: this.state.first,
+        last: this.state.last,
+        email: this.state.email,
+        profile_picture: this.state.profile_picture
       };
 
       // making the request to the server to post the new user's registration
       axios.post('/api/login/register/', body)
         .then((response) => {
           if (response.status === 201) {
-            this.props.history.push('/home');
+            this.props.history.push('/login');
           } else {
             this.setState({
               message: 'Ooops! That didn\'t work. The username might already be taken. Try again!',
@@ -66,138 +75,80 @@ class RegisterPage extends Component {
   }
 
   render() {
+
     return (
-      <div>
-        {this.renderAlert()}
-        <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
-          <div>
-            <label htmlFor="Username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
-          {/* <div>
-            <label >
-              First Name:
-              <input
-                type="text"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Last Name:
-              <input
-                type="text"
-              
-              />
-            </label>
-          </div>
-          <div>
-            <label >
-              Street Address:
-              <input
-                type="text"
-              />
-            </label>
-          </div>
-          <div>
-            <label >
-              City:
-              <input
-                type="text"
-              />
-            </label>
-          </div>
-          <div>
-            <label >
-              State:
-              <input
-                type="text"
-              />
-            </label>
-          </div>
-          <div>
-            <label >
-              Zipcode:
-              <input
-                type="number"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Credit Card Number:
-              <input
-                type="number"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Expiration Month:
-              <input
-                type="number"
-              />
-            </label>
-          </div>
 
-              <div>
-            <label >
-              Expiration Month:
-              <input
-                type="number"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Expiration Year:
-              <input
-                type="number"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Security Code:
-              <input
-                type="number"
-              />
-            </label>
-          </div> */}
+       
+         <div className="reg-Form">
+         {this.renderAlert()}
 
+<Grid container spacing={16} direction="column" align="center">
 
-          <div>
-            <input
+  <ListSubheader component="h1" style={{color:'black', fontSize:"2em", marginLeft: '70px'}}>Registration</ListSubheader>
+
+  <form onSubmit={this.registerUser}>
+    {/* get input values */}
+    <Grid item xs={6}>
+      <TextField
+        label="Username"
+        margin="normal"
+        type="text"
+        name="username"
+        value={this.state.username}
+        onChange={this.handleInputChangeFor('username')} />
+      <br />
+      <TextField
+        label="Password"
+        margin="normal"
+        type="password"
+        name="password"
+        value={this.state.password}
+        onChange={this.handleInputChangeFor('password')}/>
+      <br />
+      <TextField
+        label="First Name"
+        margin="normal"
+        onChange={this.handleInputChangeFor('first')} type="text" name="first" value={this.state.first} />
+      <br />
+      <TextField
+        label="Last Name"
+        margin="normal"
+        onChange={this.handleInputChangeFor('last')} type="text" name="last" value={this.state.last} />
+      <br />
+      <TextField
+        label="Email address"
+        margin="normal"
+        onChange={this.handleInputChangeFor('email')} type="text" name="email" value={this.state.email} />
+      <br />
+      <TextField
+        label="Profile Picture"
+        margin="normal"
+        onChange={this.handleInputChangeFor('profile_picture')} type="text" name="profile_picture" value={this.state.profile_picture} />
+      {/* move button to far right */}
+    </Grid>
+    <input
               type="submit"
               name="submit"
               value="Register"
+            
             />
+  </form>
+  <div>
+           
+            <label>
             <Link to="/login">Cancel</Link>
+            </label>
           </div>
-        </form>
-      </div>
+</Grid>
+{/* { content } */}
+</div>
+        
+       
+       
     );
   }
 }
 
 export default RegisterPage;
+
 
