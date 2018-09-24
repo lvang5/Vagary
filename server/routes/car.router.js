@@ -61,4 +61,18 @@ router.post('/', (req, res) => {
       
 });
 
+
+router.delete('/:id', (req, res) => {
+    const idOfCartoDelete = req.params.id;
+      console.log('deleting ', idOfCartoDelete);
+      const queryText = 'DELETE FROM "car" WHERE "car_id" = $1;';
+      pool.query(queryText, [idOfCartoDelete]).then((result) => {
+          res.sendStatus(200);
+      }).catch( (error) => {
+          console.log('Error in delete', error);
+          res.sendStatus(500);
+      });
+  });
+  
+
 module.exports = router;

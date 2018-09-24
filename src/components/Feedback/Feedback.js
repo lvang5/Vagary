@@ -5,6 +5,8 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
   user: state.user,
+  start: state.tripReducer,
+  end: state.tripReducer
 });
 
 class Feedback extends Component {
@@ -17,8 +19,8 @@ class Feedback extends Component {
     super()
     this.state = {rating:'',
                   review: '',
-                  start_time: '',
-                  end_time: '',
+                 start_time: '',
+                  // end_time: '',
                   // end_time: this.props.start[0].end_time,
 
     }
@@ -26,7 +28,10 @@ class Feedback extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-
+    this.setState({
+      start_time: this.props.start.start_time,
+      end_time: this.props.end.end_time
+    })
   }
 
 
@@ -46,7 +51,7 @@ class Feedback extends Component {
   };
 
   handleRoute = () => {
-    this.props.history.push('home');
+    this.props.history.push('history');
   }
   render() {
 
@@ -86,15 +91,11 @@ class Feedback extends Component {
           
        
         <br/>
-        <Button variant="extendedFab" aria-label="Delete" onClick={this.handleRoute}> Exit  </Button>
+        <Button variant="contained"  aria-label="Delete" onClick={this.SubmitForm}> Submit</Button>
         
-    <Button variant="extendedFab" aria-label="Delete" onClick={this.SubmitForm}> Submit</Button>
+        <br/>
+        <Button variant="contained" color="secondary" aria-label="Delete" onClick={this.handleRoute}> No, I would not like to leave any feedback </Button>
         </FormControl>
-          <p>
-            {JSON.stringify(this.props.start[0])}
-            </p>
-    
-
       </div>
 
     )

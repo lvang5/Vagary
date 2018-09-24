@@ -38,7 +38,7 @@ class ViewCars extends Component {
   };
 
   handleClick = () => {
-    this.props.history.push('feedback');
+    this.props.history.push('start');
   };
 
   render() {
@@ -90,7 +90,7 @@ class ViewCars extends Component {
                       width: '600px'
                     }} />
             <DialogContentText id="alert-dialog-slide-description">
-                    This car is currently located at {this.state.currentVehicle.city} {this.state.currentVehicle.state}. As you can see it has a beautiful {this.state.currentVehicle.color} coat. 
+                    This car is currently located in {this.state.currentVehicle.city} {this.state.currentVehicle.state}. As you can see it has a beautiful {this.state.currentVehicle.color} coat. 
                     If you are interested in renting this vehicle go ahead and select rent and you'll be on your way to a roaming journey.
             </DialogContentText>
           </DialogContent>
