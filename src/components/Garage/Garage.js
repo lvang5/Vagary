@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Card, CardActions, CardContent, CardMedia, Button, Typography, Modal, Dialog,  DialogActions, DialogContent, DialogTitle, DialogContentText, Slide } from '@material-ui/core';
+import { Grid, Card, CardActions, CardContent, CardMedia, Button, Typography, Modal, Dialog,  DialogActions, DialogContent, DialogTitle, DialogContentText, Slide, TextField, InputBase } from '@material-ui/core';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -14,7 +14,18 @@ class Garage extends Component {
     state = {
         garage: [],
         open: false,
-    currentVehicle:{}
+    currentVehicle:{},
+    editCar: {
+      make: '',
+      model: '',
+      color: '',
+      year: '',
+      city: '',
+      state: '',
+      image_path: '',
+      latitude: '',
+      longitude: '',
+    }
       };
 
   componentDidMount(){
@@ -52,8 +63,6 @@ class Garage extends Component {
 
   handleDelete = id => () => {
     console.log('DELETE ME');
-    console.log(id);
-    
     axios.delete('/api/cars/'+ id)
     .then(response => {
       this.getMyCars();
@@ -63,6 +72,29 @@ class Garage extends Component {
       alert('There is an error somewhere, check here:', error);
     })
   };
+
+  handleChange = (event) => {
+    this.setState({
+      editCar: {
+        ...this.state.editCar,
+        [event.target.name]: event.target.value,
+      }
+    });
+  }
+
+
+    handleUpdate = id => () => {
+      console.log(id)
+      axios.put('/api/cars/garage/'+ id, {editCar: this.state.editCar})
+      .then(response => {
+        this.getMyCars();
+        console.log('Car Updated', response);
+      }).catch(error => {
+        console.log('You got an error');
+        alert('There is an error somewhere, check here:', error);
+      })
+    }
+  
 
 
   render() {
@@ -109,22 +141,30 @@ class Garage extends Component {
           {this.state.currentVehicle.make} {this.state.currentVehicle.model}
           </DialogTitle>
           <DialogContent>
-          <CardMedia image={this.state.currentVehicle.image_path}
-                    style={{
-                      height: '300px',
-                      width: '600px'
-                    }} />
-            <DialogContentText id="alert-dialog-slide-description">
-                    My collection of Audis plus my beater car.
-            </DialogContentText>
+        
+           <TextField onChange={this.handleChange} type="text" name="make" placeholder="make" value={this.state.make}/>
+           <br/>
+           <TextField  onChange={this.handleChange} type="text" name="model" placeholder="model" value={this.state.model}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="color" placeholder="color"  value={this.state.color}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="year" placeholder="year"  value={this.state.year}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="city" placeholder="city"  value={this.state.city}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="state" placeholder="state"  value={this.state.state}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="image_path" placeholder="Image URL"  value={this.state.image_path}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="latitude" placeholder="latitude"  value={this.state.latitude}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="longitude" placeholder="longitude" value={this.state.longitude}/>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Close
             </Button>
-            <Button onClick={this.handleClick} color="primary">
-              Done
-            </Button>
+            <Button onClick={this.handleUpdate(vehicle.car_id)} color="primary">Update</Button> 
           </DialogActions>
         </Dialog> 
           </div>

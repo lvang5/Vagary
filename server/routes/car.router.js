@@ -73,6 +73,27 @@ router.delete('/:id', (req, res) => {
           res.sendStatus(500);
       });
   });
+
+  router.put('/garage/:id', (req, res) => {
+    const  carToEdit = req.body.editCar;
+    console.log('req.body:', carToEdit);
+    const queryText = `UPDATE "car" SET "make" = $1, "model" = $2, "color" = $3, "year" = $4,
+                       "city" = $5, "state" = $6, "image_path" = $7, "latitude" = $8,
+                       "longitude" = $9 WHERE "car_id" = $10;`;
+    pool.query(queryText,[carToEdit.make, carToEdit.model,
+        carToEdit.color, carToEdit.year, carToEdit.city,
+        carToEdit.state, carToEdit.image_path,
+        carToEdit.latitude, carToEdit.longitude, req.params.id])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('Error on /api/cars/garage PUT:', error);
+            res.sendStatus(500);
+        })
+});
+
+
   
 
 module.exports = router;

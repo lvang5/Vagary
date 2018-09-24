@@ -43,9 +43,14 @@ class ViewCars extends Component {
 
   render() {
 
-   console.log(this.state.open);
+   console.log(this.props.car.length);
   //  handleClose={this.handleClose} handleClickOpen={this.handleClickOpen} 
+
+  if(this.props.car.length < 1){
+    return(<div> <h1>There are no cars available in this City</h1></div>) 
+  } else {
     return (
+
     
       <div>
         <Grid container justify="space-around" alignItems="flex-end" style={{ marginTop: '20px' }}>
@@ -116,6 +121,11 @@ class ViewCars extends Component {
       </div>
     )
   }
+
+    
+}
+  
+
 }
 const mapReduxStateToProps = (reduxState) => ({
   car: reduxState.carReducer,

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
+import { TextField } from '@material-ui/core';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
@@ -68,15 +69,23 @@ class CarForm extends Component {
         <h1> Car Form </h1>
         <form onSubmit={this.sendForm}>
           {/* get input values */}
-          <input onChange={this.handleChange} type="text" name="make" placeholder="Make" /> <br />
-          <input onChange={this.handleChange} type="text" name="model" placeholder="Model" /> <br />
-          <input onChange={this.handleChange} type="text" name="color" placeholder="Color" /> <br />
-          <input onChange={this.handleChange} type="number" name="year" placeholder="Year" /> <br />
-          <input onChange={this.handleChange} type="text" name="city" placeholder="City" /> <br />
-          <input onChange={this.handleChange} type="text" name="state" placeholder="State" /> <br />
-          <input onChange={this.handleChange} type="text" name="image_path" placeholder="image path" /> <br />
-          <input onChange={this.handleChange} type="text" name="latitude" placeholder="Latitude" /> <br />
-          <input onChange={this.handleChange} type="text" name="longitude" placeholder="Longitude" /> <br />
+          <TextField onChange={this.handleChange} type="text" name="make" placeholder="make" value={this.state.make}/>
+           <br/>
+           <TextField  onChange={this.handleChange} type="text" name="model" placeholder="model" value={this.state.model}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="color" placeholder="color"  value={this.state.color}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="year" placeholder="year"  value={this.state.year}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="city" placeholder="city"  value={this.state.city}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="state" placeholder="state"  value={this.state.state}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="image_path" placeholder="Image URL"  value={this.state.image_path}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="latitude" placeholder="latitude"  value={this.state.latitude}/>
+           <br/>
+           <TextField onChange={this.handleChange} type="text" name="longitude" placeholder="longitude" value={this.state.longitude}/>
           {/* move button to far right */}
           <input type="submit" />
         </form>
