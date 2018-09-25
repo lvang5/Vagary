@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Grid, GridListTile, ListSubheader, TextField, OutlinedInput, Input } from '@material-ui/core'
+import { Grid, GridListTile, ListSubheader, TextField, OutlinedInput, Input, Paper } from '@material-ui/core'
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -83,8 +83,8 @@ class RegisterPage extends Component {
          {this.renderAlert()}
 
 <Grid container spacing={16} direction="column" align="center">
-
-  <ListSubheader component="h1" style={{color:'black', fontSize:"2em", marginLeft: '70px'}}>Registration</ListSubheader>
+<Paper style={{width: '350px'}}>
+  <ListSubheader component="h1" style={{color:'black', fontSize:"2em"}}>Registration</ListSubheader>
 
   <form onSubmit={this.registerUser}>
     {/* get input values */}
@@ -125,6 +125,7 @@ class RegisterPage extends Component {
         margin="normal"
         onChange={this.handleInputChangeFor('profile_picture')} type="text" name="profile_picture" value={this.state.profile_picture} />
       {/* move button to far right */}
+
     </Grid>
     <input
               type="submit"
@@ -132,6 +133,7 @@ class RegisterPage extends Component {
               value="Register"
             
             />
+            
   </form>
   <div>
            
@@ -139,7 +141,9 @@ class RegisterPage extends Component {
             <Link to="/login">Cancel</Link>
             </label>
           </div>
+          </Paper>  
 </Grid>
+
 {/* { content } */}
 </div>
         

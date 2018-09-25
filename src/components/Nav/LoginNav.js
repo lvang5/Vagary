@@ -41,11 +41,6 @@ class LoginNav extends Component{
           </Link>
         </li>
         <li>
-          <Link to="/profile">
-            PROFILE
-          </Link>
-        </li>
-        <li>
          <Button
             onClick={this.logout}
             style={{bottom:'7px',
