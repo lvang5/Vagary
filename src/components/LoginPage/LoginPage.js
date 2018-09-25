@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import {Avatar, Grid, TextField, Button, ListSubheader} from '@material-ui/core';
+import {Avatar, Grid, TextField, Button, ListSubheader, Paper} from '@material-ui/core';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -65,27 +65,23 @@ class LoginPage extends Component {
     return (
       <div className="loginDiv">
         {this.renderAlert()}
-        <form onSubmit={this.login} className="login">
-        
-          <div>
-          
+             <Paper style={{width: '350px', height: '350px', position: 'absolute',
+            top: '35%',
+            left: '40%',
+            marginRight: '-50%',
+            transform: ('-50%', '-50%'), }}>
           <ListSubheader component="h1" style={{margin: '0',
             position: 'absolute',
-            top: '35%',
-            left: '44%',
+            top: '0%',
+            left: '33%',
             marginRight: '-50%',
             transform: ('-50%', '-50%'),
             color:'black',
-            fontSize:'3em',
+            fontSize:'1.5em',
             fontFamily: 'Tahoma, Geneva, sans-serif'}}>Login</ListSubheader>
-          <React-Component style={{
-            margin: '0',
-            position: 'absolute',
-            top: '40%',
-            left: '40%',
-            marginRight: '-50%',
-            transform: ('-50%', '-50%')
-          }}>
+              <form onSubmit={this.login} className="login">
+      
+      <div>
         Username:<TextField
                type="text"
                name="username"
@@ -95,6 +91,7 @@ class LoginPage extends Component {
                onChange={this.handleInputChangeFor('username')}
             />
             <br/>
+          
             Password: <TextField
                type="password"
                name="password"
@@ -103,6 +100,7 @@ class LoginPage extends Component {
               margin="normal"
               variant="outlined"
             />
+          
             <br/>
             {/* <Input placeholder="e.g. City" /> */}
             <Link to="/register" style={{ margin: '0'}}>Register</Link>
@@ -114,10 +112,13 @@ class LoginPage extends Component {
               name="submit"
               value="Log In"
   style={{margin:'0'}}>Submit</Button>
-          </React-Component>
-            
-          </div>
-        </form>
+      </div>
+          
+          </form>
+  </Paper>
+          {/* </React-Component> */}
+    
+      
       </div>
     );
   }
