@@ -131,6 +131,7 @@ class CarForm extends Component {
                 variant="outlined"
                 onChange={this.handleChange} type="text" name="longitude" value={this.state.longitude} />
               {/* move button to far right */}
+              <br/>
               <input type="submit" />
               </Paper>
             </Grid>

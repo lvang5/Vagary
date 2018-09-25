@@ -41,7 +41,12 @@ class ViewCars extends Component {
 
   handleClick = () => {
     this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
-    this.props.history.push('start');
+    if(this.state.currentVehicle.available === false){
+      alert('This vehicle is not available');
+    }else{
+      this.props.history.push('start');
+    }
+  
   };
 
   render() {
@@ -51,7 +56,7 @@ class ViewCars extends Component {
 
   if(this.props.car.length < 1){
     return(<div> <h1>There are no cars available in this City</h1></div>) 
-  } else {
+  }else{
     return (
 
     
@@ -98,9 +103,12 @@ class ViewCars extends Component {
                       width: '600px'
                     }} />
             <DialogContentText id="alert-dialog-slide-description">
-                    This car is currently located in {this.state.currentVehicle.city} {this.state.currentVehicle.state}. As you can see it has a beautiful {this.state.currentVehicle.color} coat. 
+                    This car is currently in {this.state.currentVehicle.city} {this.state.currentVehicle.state}. As you can see it has a beautiful {this.state.currentVehicle.color} coat. 
                     If you are interested in renting this vehicle go ahead and select rent and you'll be on your way to a roaming journey.
+                    Avilable for rent: {JSON.stringify(this.state.currentVehicle.available)}
             </DialogContentText>
+            
+
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
@@ -115,11 +123,12 @@ class ViewCars extends Component {
         </Modal>
                   </CardActions>
                 </Card>
-                
               </Grid>
             );
           })}
         </Grid>
+
+        
         {/* space around cards */}
       </div>
     )

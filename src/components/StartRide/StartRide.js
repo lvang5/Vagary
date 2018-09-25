@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 import moment from 'moment';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import axios from 'axios';
 //moment().format(); takes in current time 
 //setInterval pass in a function, 1000 millesec
 //goes into the saga
@@ -51,19 +52,35 @@ class StartRide extends Component {
       this.props.history.push('login');
     }
   }
-  handleEnd = () => {
+  handleEnd = id => () => {
     this.setState({
       // showTime: false,
       end_time: moment().format()
     })
     clearInterval(clockInterval);
+
+    axios.put('/api/cars/status/'+ id, {available: true})
+    .then(response => {
+      console.log('Car Updated', response);
+    }).catch(error => {
+      console.log('You got an error');
+      alert('There is an error somewhere, check here:', error);
+    })
     
   }
 
-  handleStart = () => {
+  handleStart = id => () => {
     this.setState({
       showTime: false,
       start_time: moment().format()
+    })
+
+    axios.put('/api/cars/status/'+ id, {available: false})
+    .then(response => {
+      console.log('Car Updated', response);
+    }).catch(error => {
+      console.log('You got an error');
+      alert('There is an error somewhere, check here:', error);
     })
   }
 
@@ -107,10 +124,10 @@ class StartRide extends Component {
 
     let startButton = null;
     if (this.state.showTime) {
-      startButton = <button onClick={this.handleStart} className="start">Start Your Ride</button>;
+      startButton = <button onClick={this.handleStart(this.props.car)} className="start">Start Your Ride</button>;
       timer = '00:00:00';
     } else {
-      startButton = <button onClick={this.handleEnd} className="stop" >End Ride</button>
+      startButton = <button onClick={this.handleEnd(this.props.car)} className="stop" >End Ride</button>
 
       timer = this.state.timeElapsed;
     }

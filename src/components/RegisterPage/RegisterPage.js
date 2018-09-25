@@ -14,7 +14,7 @@ class RegisterPage extends Component {
       first: '',
       last: '',
       email: '',
-      profile_picture: '',
+      profile_pic: '',
     };
   }
 
@@ -32,7 +32,7 @@ class RegisterPage extends Component {
         first: this.state.first,
         last: this.state.last,
         email: this.state.email,
-        profile_picture: this.state.profile_picture
+        profile_picture: this.state.profile_pic
       };
 
       // making the request to the server to post the new user's registration
@@ -123,7 +123,7 @@ class RegisterPage extends Component {
       <TextField
         label="Profile Picture"
         margin="normal"
-        onChange={this.handleInputChangeFor('profile_picture')} type="text" name="profile_picture" value={this.state.profile_picture} />
+        onChange={this.handleInputChangeFor('profile_pic')} type="text" name="profile_picture" value={this.state.profile_pic} />
       {/* move button to far right */}
 
     </Grid>
