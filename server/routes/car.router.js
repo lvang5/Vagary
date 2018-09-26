@@ -18,6 +18,18 @@ router.get('/', (req, res) => {
 
 });
 
+router.get('/all', (req, res) => {
+    // if (req.isAuthenticated()) {
+        const queryText = `SELECT * FROM "car";`;
+        pool.query(queryText)
+            .then(response => res.send(response.rows))
+             .catch(error => res.sendStatus(500));
+    // } else {
+    //     res.sendStatus(401);
+    // }
+
+});
+
 
 //owner cars
 router.get('/owner', (req, res) => {

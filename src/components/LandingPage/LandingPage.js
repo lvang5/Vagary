@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {Avatar, Grid, TextField, Button, ListSubheader} from '@material-ui/core';
+import GoogleMap from '../GoogleMap/GoogleMap.js';
 
 
 
@@ -49,9 +50,10 @@ class LandingPage extends Component {
   
         <div className="container-div">
         <Grid container alignContent="flex-end">
-          <img className="img" src="https://www.samsung.com/global/galaxy/galaxy-note8/images/galaxy-note8_overview_kv_type1.jpg"/>
+        <GoogleMap/>
+          {/* <img className="img" src="https://www.samsung.com/global/galaxy/galaxy-note8/images/galaxy-note8_overview_kv_type1.jpg"/> */}
         <div>
-        <React-Component style={{  margin: '0',
+        {/* <React-Component style={{  margin: '0',
  
     position: 'absolute',
     top: '40%',
@@ -65,10 +67,10 @@ class LandingPage extends Component {
           variant="outlined"
           onBlur={this.handleInput}
         />
-         {/* <Input placeholder="e.g. City" /> */}
+       
         <Button  variant="outlined" onClick={this.handleClick}>Submit</Button>
-        {/* Find image for backgroud */}
-        </React-Component>
+
+        </React-Component> */}
         <Grid item sm={6} style={{fontSize:'15px', color: 'white'}}>
         <Avatar alt="Lais Vang" src="https://avatars1.githubusercontent.com/u/38891207?s=460&v=4" style={{width: 100,
         height: 100,}} />
