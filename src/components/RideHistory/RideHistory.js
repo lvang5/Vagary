@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Paper, Grid, Typography, List, ListItem, ListItemText, CardMedia } from '@material-ui/core';
+import { Button, Paper, Grid, Typography, List, ListItem, ListItemText, CardMedia, CardContent } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
@@ -64,22 +64,35 @@ class RideHistory extends Component {
                           marginLeft: '75%',
                           border: 'solid'
                         }} />
-                        <br/>
-                      <Typography variant="title" align="right">
+                        <CardContent style={{
+                          height: '250px',
+                          width: '400px',
+                          marginLeft: '75%'
+                        }}>
+                      <Typography variant="title">
                         Car: {this.state.currentCar.make} {this.state.currentCar.model}
                       </Typography>
-                      <Typography variant="title" align="right">
+                      <Typography variant="title">
                         Duration of Ride: {this.props.trip.duration}
                       </Typography>
-                      <Typography variant="title" align="right">
+                      <Typography variant="title">
                         Rented: { this.state.start_date}
                       </Typography>
-                      <Typography variant="title" align="right">
+                      <Typography variant="title">
                         Returned: { this.state.end_date}
                       </Typography>
+                      <Typography variant="title" >
+                        Thank you for your feedback!
+                        <br/>
+                       Rating: {this.props.trip.rating} 
+                       <br/>
+                       Review: {this.props.trip.review}
+                      </Typography>
+                      <Button disableFocusRipple="true" disableRipple="true" variant="extendedFab" onClick={this.handleDone} style={{ float: 'right', margin: '0' }}>Finish</Button>
+                      </CardContent>
             </Grid>
           </Grid>
-          <Button variant="extendedFab" onClick={this.handleDone} style={{ float: 'right', margin: '0' }}>Finish</Button>
+         
         </Paper>
       </div>
     )

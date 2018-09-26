@@ -1,32 +1,20 @@
 import React, { Component } from 'react';
-import { Grid, Card, CardActions, CardContent, CardMedia, Button, Typography, Modal, Dialog,  DialogActions, DialogContent, DialogTitle, DialogContentText, Slide } from '@material-ui/core';
+import { Grid, Paper, Card, CardActions, CardContent, CardMedia, Button, Typography, Modal, Dialog,  DialogActions, DialogContent, DialogTitle, DialogContentText, Slide } from '@material-ui/core';
 import axios from 'axios';
 import { connect } from 'react-redux';
-// import { USER_ACTIONS } from '../../redux/actions/userActions';
+
 
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
-//
+
 class ViewCars extends Component {
   state = {
     open: false,
     currentVehicle:{},
   };
 
-
-  // componentDidMount() {
-  //   this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-  // }
-
-
-  // componentDidUpdate() {
-  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
-  //     this.props.history.push('login');
-  //   }
-   
-  // }
 
 
   handleOpen = (vehicle) => {
@@ -52,7 +40,7 @@ class ViewCars extends Component {
   render() {
 
    console.log(this.props.car.length);
-  //  handleClose={this.handleClose} handleClickOpen={this.handleClickOpen} 
+
 
   if(this.props.car.length < 1){
     return(<div> <h1>There are no cars available in this City</h1></div>) 
@@ -61,7 +49,7 @@ class ViewCars extends Component {
 
     
       <div>
-        <Grid container justify="space-around" alignItems="flex-end" style={{ marginTop: '20px' }}>
+        <Grid container justify="space-around" alignItems="flex-center" style={{ marginTop: '20px' }}>
           {this.props.car.map((vehicle, i) => {
             return (
               <Grid key={i} >
@@ -105,7 +93,7 @@ class ViewCars extends Component {
             <DialogContentText id="alert-dialog-slide-description">
                     This car is currently in {this.state.currentVehicle.city} {this.state.currentVehicle.state}. As you can see it has a beautiful {this.state.currentVehicle.color} coat. 
                     If you are interested in renting this vehicle go ahead and select rent and you'll be on your way to a roaming journey.
-                    Avilable for rent: {JSON.stringify(this.state.currentVehicle.available)}
+                    Available for rent: {JSON.stringify(this.state.currentVehicle.available)}
             </DialogContentText>
             
 
@@ -127,7 +115,7 @@ class ViewCars extends Component {
             );
           })}
         </Grid>
-
+       
         
         {/* space around cards */}
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {FormControlLabel, FormControl, RadioGroup, Radio, FormLabel, Button, TextField} from '@material-ui/core';
+import {FormControlLabel, FormControl, RadioGroup, Radio, FormLabel, Button, TextField, Paper} from '@material-ui/core';
 import {connect} from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
@@ -77,23 +77,24 @@ class Feedback extends Component {
       
       <div>
         
-        
-        <FormControl component="fieldset" >
+        <Paper style={{width:'500px', height:'500px', marginLeft: '30%'}}>
+        <FormControl component="fieldset" fullWidth="true" style={{marginLeft: '25%'}}>
         <FormLabel component="h1">Would you like to leave some feedback?</FormLabel>
           <RadioGroup   aria-label="feedback"
             name="feedback"
             
             value={this.state.rating}
-            onChange={this.handleChange}>
+            onChange={this.handleChange}
+            style={{marginLeft: '10%'}}>
             <FormControlLabel value="1" control={<Radio />} label="1 - Needs Reinforcement" />
             <FormControlLabel value="2" control={<Radio />} label="2 - Below expectation" />
             <FormControlLabel value="3" control={<Radio />} label="3 - Meets Expectations" />
             <FormControlLabel value="4" control={<Radio />} label="4 - Above meets expectation" />
             <FormControlLabel value="5" control={<Radio />} label="5 - Exceeds Expectations" />
-            <FormControlLabel control={<TextField onBlur={this.handleReview} id="outlined-full-width"
+            <FormControlLabel control={<TextField onBlur={this.handleReview}   id="outlined-full-width"
           label="Comments"
           style={{ margin: 8 }}
-          placeholder="This Applicaiton is awesome"
+          placeholder="Great Ride!"
           width='100%'
           margin="normal"
           variant="outlined"
@@ -106,12 +107,12 @@ class Feedback extends Component {
           
        
         <br/>
-        <Button variant="contained"  aria-label="Delete" onClick={this.SubmitForm}> Submit</Button>
+        <Button variant="contained"  aria-label="Delete" onClick={this.SubmitForm} style={{marginLeft: '10%'}}> Submit</Button>
         
         <br/>
-        <Button variant="contained" color="secondary" aria-label="Delete" onClick={this.handleRoute}> No, I would not like to leave any feedback </Button>
+        <Button variant="contained" color="secondary" aria-label="Delete" onClick={this.handleRoute} style={{marginLeft: '30%', marginTop: '-11%' }}> Continue </Button>
         </FormControl>
-
+          </Paper>
         
       </div>
 
