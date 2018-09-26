@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import {Button} from '@material-ui/core';
+import {Avatar, Grid, TextField, Button, ListSubheader} from '@material-ui/core';
 const mapStateToProps = state => ({
   user: state.user,
 });
@@ -57,6 +57,17 @@ class LoginNav extends Component{
         </li>
       </ul>
     </div>
+    <ListSubheader style={{
+      color: 'black',
+      margin: '0',
+    position: 'absolute',
+    top: '10%',
+    left: '40%',
+    marginRight: '-50%',
+    transform: ('-50%', '-50%'),
+    }}>
+    <h1>Welcome {this.props.user.userName}</h1></ListSubheader>
+    
   </div>
     );
   }

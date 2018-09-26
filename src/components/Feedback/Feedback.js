@@ -34,6 +34,7 @@ class Feedback extends Component {
                  start_time: '',
                   end_time: '',
                   car_id: '',
+                  duration: '',
 
     }
   }
@@ -43,7 +44,8 @@ class Feedback extends Component {
     this.setState({
       start_time: this.props.start.start_time,
       end_time: this.props.end.end_time,
-      car_id: this.props.currentCar.car
+      car_id: this.props.currentCar.car,
+      duration: this.props.start.timeElapsed
     })
   }
 

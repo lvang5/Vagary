@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Card, CardActions, CardContent, CardMedia, Button, Typography, Modal, Dialog,  DialogActions, DialogContent, DialogTitle, DialogContentText, Slide } from '@material-ui/core';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+// import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 
 function Transition(props) {
@@ -16,17 +16,17 @@ class ViewCars extends Component {
   };
 
 
-  componentDidMount() {
-    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-  }
+  // componentDidMount() {
+  //   this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+  // }
 
 
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('login');
-    }
+  // componentDidUpdate() {
+  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
+  //     this.props.history.push('login');
+  //   }
    
-  }
+  // }
 
 
   handleOpen = (vehicle) => {

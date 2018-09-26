@@ -142,8 +142,6 @@ class StartRide extends Component {
         <br />
 
 
-        Start your ride now!
-
          {/* <div className="container-button"> */}
           <div className="time-display">
             {timer}

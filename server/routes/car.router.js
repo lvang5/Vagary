@@ -23,7 +23,8 @@ router.get('/', (req, res) => {
 router.get('/owner', (req, res) => {
   
     if (req.isAuthenticated()) {
-        const queryText = `SELECT * FROM "car" WHERE "person_id" = $1;`;
+        const queryText = `SELECT * FROM "car" JOIN "person" ON "car"."person_id" = "person"."id" WHERE "person_id" = $1;
+        `;
         pool.query(queryText, [req.user.id])
             .then(response => res.send(response.rows))
              .catch(error => res.sendStatus(500));
@@ -33,6 +34,21 @@ router.get('/owner', (req, res) => {
 
 });
 
+
+//trip info
+
+// router.get('/trip', (req, res) => {
+  
+//     if (req.isAuthenticated()) {
+//         const queryText = `SELECT * FROM "trip" JOIN "car" ON "trip"."car_id" = "car"."car_id"; `;
+//         pool.query(queryText)
+//             .then(response => res.send(response.rows))
+//              .catch(error => res.sendStatus(500));
+//     } else {
+//         res.sendStatus(401);
+//     }
+
+// });
 
 /**
  * POST route template
