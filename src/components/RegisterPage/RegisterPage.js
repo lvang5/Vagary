@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Grid, GridListTile, ListSubheader, TextField, OutlinedInput, Input, Paper } from '@material-ui/core'
+import { Grid, GridListTile, ListSubheader, TextField, OutlinedInput, Input, Paper } from '@material-ui/core';
+import LoggedOut from '../Nav/LogoutNav';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -80,6 +81,8 @@ class RegisterPage extends Component {
 
        
          <div className="reg-Form">
+
+         <LoggedOut/>
          {this.renderAlert()}
 
 <Grid container spacing={16} direction="column" align="center">

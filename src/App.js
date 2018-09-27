@@ -25,7 +25,7 @@ const App = () => (
    
     <Router>
     <div>
-    <Header title="Vagary"/>
+    {/* <Header title="Vagary"/> */}
       <Switch>
         
     

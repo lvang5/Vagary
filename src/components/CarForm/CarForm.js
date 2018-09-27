@@ -4,18 +4,24 @@ import axios from 'axios';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { TextField } from '@material-ui/core';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import { Grid, GridListTile, ListSubheader, Paper } from '@material-ui/core'
+import { Grid, GridListTile, ListSubheader, Paper, Button } from '@material-ui/core';
+import LoggedInNav from '../Nav/LoginNav.js';
+import ReactFilestack from 'filestack-react';
 
 const mapStateToProps = state => ({
   user: state.user,
 });
+
+//USED FOR FILESTACK -- 
+
+
+
 
 class CarForm extends Component {
 
   constructor() {
     super()
     this.state = {
-      newCar: {
         make: '',
         model: '',
         color: '',
@@ -25,25 +31,43 @@ class CarForm extends Component {
         image_path: '',
         latitude: '',
         longitude: '',
-
-
-      }
     }
   }
 
 
+
   handleChange = (event) => {
     this.setState({
-      newCar: {
-        ...this.state.newCar,
+        ...this.state,
         [event.target.name]: event.target.value,
-      }
     });
 
 
   }
 
+componentDidMount() {
+  this.config = {
+      cloud_name: process.env.REACT_APP_CLOUD,
+      api_key: process.env.REACT_APP_CLOUDINARY_API_KEY,
+      api_secret: process.env.REACT_APP_CLOUDINARY_API_KEY_SECRET,
+      upload_preset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+  }
+}
 
+
+openCloudinary = () => {
+  window.cloudinary.openUploadWidget(this.config, (error, result) => {
+    if (result) {
+      // let cloudinaryUrl = result
+      this.setState({
+        // store url to local state BEFORE dispatching an action
+        ...this.state,
+        image_path: result[0].url        
+      })
+      console.log(this.state.image_path)
+    }
+  })
+}
 
   render() {
 
@@ -51,23 +75,18 @@ class CarForm extends Component {
 
     this.sendForm = (event) => {
       event.preventDefault();
-      this.props.dispatch({ type: 'ADD_CAR', payload: this.state.newCar })
-      axios({
-        method: 'POST',
-        url: '/api/cars',
-        data: { newCar: this.state.newCar }
-      }).then((response) => {
-        console.log('success with POST');
-      }).catch((error) => {
-        console.log(error);
-        alert('unable to add car');
-      })
+      this.props.dispatch({ type: 'POST_DATA', payload: this.state })
       this.props.history.push('home');
     }
 
+
+ 
+
+
+
     return (
       <div className="carForm">
-
+      <LoggedInNav />
 
         <Grid container spacing={16} direction="column" align="center">
         
@@ -113,11 +132,18 @@ class CarForm extends Component {
                 variant="outlined"
                 onChange={this.handleChange} type="text" name="state" value={this.state.state} />
               <br />
-              <TextField
+              {/* <TextField
                 label="Image URL"
                 margin="normal"
                 variant="outlined"
-                onChange={this.handleChange} type="text" name="image_path" value={this.state.image_path} />
+                onChange={this.handleChange} type="text" name="image_path" value={this.state.image_path} /> */}
+                {/* <ReactFilestack
+                apikey={'AouYSlanfRRKrsdfEOVJhz'}
+                buttonText="Click me"
+                buttonClass="classname"
+                options={options}
+                onSuccess={this.getImage}
+                /> */}
               <br />
               <TextField
                 label="Latitude"
@@ -132,6 +158,11 @@ class CarForm extends Component {
                 onChange={this.handleChange} type="text" name="longitude" value={this.state.longitude} />
               {/* move button to far right */}
               <br/>
+              <Button onClick={this.openCloudinary} color="primary">
+              U
+              e
+            </Button>
+            <br />
               <input type="submit" />
               </Paper>
             </Grid>

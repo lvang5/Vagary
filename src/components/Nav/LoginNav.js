@@ -29,24 +29,37 @@ class LoginNav extends Component{
     return(
 <div className="navbar">
     <div>
-      <ul>
+    <h3 className="welcome">Welcome {this.props.user.userName}</h3>
+      <ul className="center_nav">
+      <br />
         <li>
+        <Link to="/home">
+              VAGARY
+            </Link>
+          </li>
+          <li>
           <Link to="/rent">
-            RENT CAR
+            LIST CAR
           </Link>
-        </li>
-        <li>
+          </li>
+          <li>
           <Link to="/garage">
             GARAGE
           </Link>
-        </li>
+          </li> 
+          
+          
         <li>
+        
+    
          <Button
             onClick={this.logout}
-            style={{bottom:'7px',
-            textAlign: 'center',
-            float: 'left',
-            fontFamily: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,}}
+            style={{
+             position: 'absolute',
+             top:'0', 
+             right:'0',
+             fontFamily: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,
+          }}
           >
             <Link to="/home">
             Log Out
@@ -57,17 +70,13 @@ class LoginNav extends Component{
         </li>
       </ul>
     </div>
-    <ListSubheader style={{
+  
+    {/* <ListSubheader style={{
       color: 'black',
-      margin: '0',
-    position: 'absolute',
-    top: '10%',
-    left: '40%',
-    marginRight: '-50%',
-    transform: ('-50%', '-50%'),
-    }}>
-    <h1>Welcome {this.props.user.userName}</h1></ListSubheader>
-    
+      position: 'fixed',
+      marginLeft:'23%',
+   
+    }}> */}
   </div>
     );
   }
@@ -75,3 +84,7 @@ class LoginNav extends Component{
 }
 
 export default connect(mapStateToProps)(LoginNav);
+
+
+
+          

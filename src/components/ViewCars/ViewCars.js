@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Paper, Card, CardActions, CardContent, CardMedia, Button, Typography, Modal, Dialog,  DialogActions, DialogContent, DialogTitle, DialogContentText, Slide } from '@material-ui/core';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import LoggedInNav from '../Nav/LoginNav.js';
 
 
 
@@ -49,6 +50,7 @@ class ViewCars extends Component {
 
     
       <div>
+         <LoggedInNav />
         <Grid container justify="space-around" alignItems="flex-center" style={{ marginTop: '20px' }}>
           {this.props.car.map((vehicle, i) => {
             return (

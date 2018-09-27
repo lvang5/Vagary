@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
 import moment from 'moment';
-
+import LoggedInNav from '../Nav/LoginNav.js';
 
 class RideHistory extends Component {
   state = {currentCar: [],
@@ -53,6 +53,7 @@ class RideHistory extends Component {
   render() {
     return (
       <div>
+        <LoggedInNav />
         <Paper>
           <h1 align="center">Ride History</h1>
           <Grid container spacing={16}>

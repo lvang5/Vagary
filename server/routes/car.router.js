@@ -66,9 +66,9 @@ router.get('/owner', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-    console.log(req.body.newCar);
+    console.log(req.body);
     if(req.isAuthenticated()) {
-      const carToAdd = req.body.newCar;
+      const carToAdd = req.body;
       const queryText = `INSERT INTO "car" ("person_id", "make", "model",
                          "color", "year", "city", "state", "image_path", 
                          "latitude", "longitude")

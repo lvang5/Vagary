@@ -6,15 +6,20 @@ class LogOutNav extends Component {
     return (
       <div className="navbar">
       <div>
-        <ul>
+        <ul className="center_nav">
+        <li>
+            <Link to="/home">
+              VAGARY 
+            </Link>
+          </li>
           <li>
             <Link to="/login">
-              Login
+              LOGIN
             </Link>
           </li>
           <li>
             <Link to="/register">
-              Sign up
+              SIGN UP
             </Link>
           </li>
         </ul>

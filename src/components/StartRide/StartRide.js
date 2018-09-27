@@ -5,6 +5,8 @@ import 'moment-timezone';
 import moment from 'moment';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
+
+import LoggedInNav from '../Nav/LoginNav.js';
 //moment().format(); takes in current time 
 //setInterval pass in a function, 1000 millesec
 //goes into the saga
@@ -137,6 +139,7 @@ class StartRide extends Component {
     return (
       <div>
 
+      <LoggedInNav />
 
 
         <br />

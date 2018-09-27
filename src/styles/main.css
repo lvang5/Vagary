@@ -8,6 +8,15 @@ body {
     color: #ece7e7;
 }
 
+.welcome{
+    text-align: center;
+    color: white;
+}
+
+.center_nav {
+    display: flex;
+    justify-content: center;
+}
 
 
 
@@ -161,4 +170,21 @@ html body{
     font-family: Tahoma, Geneva, sans-serif;
 
 }
+
+.form-inline {
+    margin: 20px 0;
+  }
+  .form-inline .form-group {
+    margin-bottom: 0;
+  }
+  .form-inline .form-group,
+  .form-inline .form-control,
+  .form-inline button {
+    width: 100%;
+  }
+  .bg-danger,
+  .bg-info {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
 

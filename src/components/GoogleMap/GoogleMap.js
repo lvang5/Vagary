@@ -9,6 +9,7 @@ function Transition(props) {
     return <Slide direction="up" {...props} />;
   }
 
+  
 export class MapContainer extends Component {
     state = {car : [],
         open: false,
@@ -53,6 +54,15 @@ onMarkerClick = (vehicle) => {
     });
 }
 
+// handleClick = () => {
+//     this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
+//     if(this.state.currentVehicle.available === false){
+//       alert('This vehicle is not available');
+//     }else{
+//       this.props.history.push('view');
+//     }
+//     this.props.history.push('start');
+//   };
 
   render() {
       
@@ -63,8 +73,9 @@ onMarkerClick = (vehicle) => {
             onClick={() =>this.onMarkerClick(vehicle)}
             name={vehicle.make}
             name={vehicle.model}
-            position={{lat: vehicle.latitude, lng: vehicle.longitude}}/>
-          
+            position={{lat: vehicle.latitude, lng: vehicle.longitude}}
+            />
+            
         )
     })
 
@@ -80,7 +91,7 @@ onMarkerClick = (vehicle) => {
         <div style={style}>
        
        
-      <Map google={this.props.google} zoom={12} initialCenter={{
+      <Map google={this.props.google} zoom={3.5} initialCenter={{
         lat: 44.978031,
         lng: -93.26350100000002
           }} >
@@ -88,9 +99,20 @@ onMarkerClick = (vehicle) => {
             
             position={{lat: this.state.car[0].latitude, lng: this.state.car[0].longitude}}/> */}
         <Marker onClick={this.onCurrentLocation}
-                name={'Current location'} />
+                name={'Prime Digital Academy'} />
             {mapMarker}
   
+            <InfoWindow 
+            onClose={this.onInfoWindowClose}
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}>
+           
+              <div>
+                <h1>{this.state.selectedPlace.name} </h1>
+    
+              </div>
+        </InfoWindow>
+      
     
       </Map>
       <Modal
@@ -129,7 +151,7 @@ onMarkerClick = (vehicle) => {
             <Button onClick={this.handleClose} color="primary">
               Close
             </Button>
-            <Button onClick={this.handleClick} color="primary">
+            <Button onClick={this.props.onHandleClick} color="primary">
             Continue to rent
             </Button>
           </DialogActions>
@@ -138,15 +160,6 @@ onMarkerClick = (vehicle) => {
         </Modal>
 
 
-           <InfoWindow onClose={this.onInfoWindowClose}
-         marker={this.state.activeMarker}
-         visible={this.state.showingInfoWindow}>
-           
-              <div>
-                <h1>{this.state.selectedPlace.name}</h1>
-              </div>
-        </InfoWindow>
-      
       </div>
     );
   }

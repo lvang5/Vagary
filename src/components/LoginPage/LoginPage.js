@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import {Avatar, Grid, TextField, Button, ListSubheader, Paper} from '@material-ui/core';
+import LoggedOut from '../Nav/LogoutNav';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -64,6 +65,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="loginDiv">
+      <LoggedOut/>
         {this.renderAlert()}
              <Paper style={{width: '350px', height: '350px', position: 'absolute',
             top: '35%',

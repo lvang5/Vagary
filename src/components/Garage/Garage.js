@@ -3,6 +3,9 @@ import { Grid, Card, CardActions, CardContent, CardMedia, Button, Typography, Mo
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import LoggedInNav from '../Nav/LoginNav.js';
+
+
 const mapStateToProps = state => ({
     user: state.user,
   });
@@ -103,13 +106,13 @@ class Garage extends Component {
     
     return (
       <div>
-
+       <LoggedInNav />
              <Grid container justify="space-around" alignItems="flex-end" style={{marginTop: '20px'}}>
             {this.state.garage.map((vehicle, i)=> {
               return(
               <Grid key={i} >
               
-              <Card>
+              <Card style={{marginTop: '20px'}}>
                 <CardMedia image={vehicle.image_path}
                 style={{height: '200px',
                         width: '400px' 

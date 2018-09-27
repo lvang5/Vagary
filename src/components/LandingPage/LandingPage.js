@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import {Avatar, Grid, TextField, Button, ListSubheader} from '@material-ui/core';
 import GoogleMap from '../GoogleMap/GoogleMap.js';
-
+import LoggedInNav from '../Nav/LoginNav.js';
+import LoggedOutNav from '../Nav/LogoutNav.js';
 
 
 class LandingPage extends Component {
   constructor() {
     super()
-    this.state = { location: ''}
+    this.state = { location: '',}
+
   }
 
 
@@ -32,14 +34,42 @@ class LandingPage extends Component {
         console.log(error);
         this.props.history.push('home');
       });
-    
-
-  
       this.props.history.push('view');
     //here is where we put dispatch to reducer
    
   }
+
+  onHandleClick = () => {
+    // this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
+    // if(this.state.currentVehicle.available === false){
+    //   alert('This vehicle is not available');
+    // }else{
+    //   this.props.history.push('view');
+    // }
+    // this.props.history.push('start');
+
+    console.log('clicked');
+  };
  
+  componentDidMount(){
+    this.getGeolocation();
+  }
+
+    getGeolocation (){
+    let location = '3815 56th Ave N minneapolis mn'
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {
+      params: {
+        address: location,
+        key: 'AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M'
+      }
+  }).then((response)=>{
+    console.log(response);
+  }).catch((error)=>{
+    console.log(error)
+  })
+
+    
+  }
 
 
   render() {
@@ -47,13 +77,21 @@ class LandingPage extends Component {
     
     return (
       
+      
   
         <div className="container-div">
+
+           {this.props.user.userName ? (
+      <LoggedInNav />
+    ) : (
+      <LoggedOutNav />
+      
+    )}
         <Grid container alignContent="flex-end">
-        <GoogleMap/>
-          {/* <img className="img" src="https://www.samsung.com/global/galaxy/galaxy-note8/images/galaxy-note8_overview_kv_type1.jpg"/> */}
+        <GoogleMap handleClick={this.onHandleClick}/>
+          
         <div>
-        {/* <React-Component style={{  margin: '0',
+        <React-Component style={{  margin: '0',
  
     position: 'absolute',
     top: '40%',
@@ -70,7 +108,7 @@ class LandingPage extends Component {
        
         <Button  variant="outlined" onClick={this.handleClick}>Submit</Button>
 
-        </React-Component> */}
+        </React-Component>
         <Grid item sm={6} style={{fontSize:'15px', color: 'white'}}>
         <Avatar alt="Lais Vang" src="https://avatars1.githubusercontent.com/u/38891207?s=460&v=4" style={{width: 100,
         height: 100,}} />
@@ -98,6 +136,10 @@ class LandingPage extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user: state.user,
+});
 
-export default connect()(LandingPage);
+
+export default connect(mapStateToProps)(LandingPage);
 

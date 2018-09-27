@@ -3,6 +3,7 @@ import {FormControlLabel, FormControl, RadioGroup, Radio, FormLabel, Button, Tex
 import {connect} from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
+import LoggedInNav from '../Nav/LoginNav.js';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -76,7 +77,7 @@ class Feedback extends Component {
       
       
       <div>
-        
+         <LoggedInNav />
         <Paper style={{width:'500px', height:'500px', marginLeft: '30%'}}>
         <FormControl component="fieldset" fullWidth="true" style={{marginLeft: '25%'}}>
         <FormLabel component="h1">Would you like to leave some feedback?</FormLabel>
