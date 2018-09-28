@@ -90,7 +90,7 @@ onMarkerClick = (vehicle) => {
         height: '400px',
         width: '1425px',
         position: 'relative',
-        margin:'0 auto',
+        margin:'0 auto'
       }
     return (
             

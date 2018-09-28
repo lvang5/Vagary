@@ -8,7 +8,8 @@ export default function* rootSaga() {
   yield all([
     userSaga(),
     loginSaga(),
-    yield takeEvery('POST_DATA', postData)
+    yield takeEvery('POST_DATA', postData),
+    yield takeEvery('FETCH_CITY', getCity)
     // watchIncrementAsync()
   ]);
 }
@@ -24,3 +25,21 @@ function* postData(action) {
   };
 
 }
+
+
+
+function* getCity(action) {
+  console.log(action.payload);
+  try{ 
+    const response = yield call(axios.get, '/api/cars/?city=' + action.payload)
+    console.log(response);
+    const responseAction = {type: 'SET_CAR', payload: response.data}
+    console.log(responseAction)
+    yield dispatch(responseAction)
+  }catch(err){
+    console.log('Error', err);
+    
+  };
+
+}
+

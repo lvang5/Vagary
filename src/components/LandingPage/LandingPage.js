@@ -44,6 +44,7 @@ class LandingPage extends Component {
       key: 'AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M'
         }
     }).then((response)=>{
+      this.props.dispatch({ type: 'FETCH_CITY', payload: this.state.location })
       console.log(response.data.results[0].geometry.location);
       this.setState({
         initialCenter: response.data.results[0].geometry.location,
@@ -85,7 +86,6 @@ class LandingPage extends Component {
         <React-Component style={{  margin: '0',
  
     position: 'absolute',
-    top: '40%',
     left: '40%',
     marginRight: '-50%',
     transform: ('-50%', '-50%')}}>
@@ -93,14 +93,21 @@ class LandingPage extends Component {
         <TextField
           label="e.g. City"
           margin="normal"
-          variant="outlined"
+          variant="filled"
           onBlur={this.handleInput}
-        />
+          fullWidth
+          style={{backgroundColor:"white"}}
+        /><span>
        
-        <Button  variant="outlined" onClick={this.handleClick}>Submit</Button>
+        <Button  variant="outlined" onClick={this.handleClick} 
+        style={{backgroundColor:"white",
+                marginLeft: '110%',
+                marginTop: '-35%',
+              }}>
+        Submit</Button></span>
 
         </React-Component>
-        <Grid item sm={6} style={{fontSize:'15px', color: 'white', marginTop:'5%' }}>
+        <Grid item sm={6} style={{fontSize:'15px', color: 'white', marginTop:'2%' }}>
         <Avatar alt="Lais Vang" src="https://avatars1.githubusercontent.com/u/38891207?s=460&v=4" style={{width: 100,
         height: 100,}} />
         <h3 className="founder-header">Founder</h3>
