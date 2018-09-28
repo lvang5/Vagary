@@ -159,8 +159,7 @@ openCloudinary = () => {
               {/* move button to far right */}
               <br/>
               <Button onClick={this.openCloudinary} color="primary">
-              U
-              e
+              Upload Image
             </Button>
             <br />
               <input type="submit" />

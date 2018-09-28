@@ -22,8 +22,23 @@ export class MapContainer extends Component {
 
     componentDidMount(){
     this.getAllCars();
+    
     }
 
+
+    onHandleClick = () => {
+        this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
+        if(this.state.currentVehicle.available === false){
+          alert('This vehicle is not available');
+        }else{
+          this.props.history.push('view');
+        }
+        this.props.history.push('start');
+    
+        console.log('clicked');
+      };
+
+  
     getAllCars(){  
     axios.get(`/api/cars/all` )
     .then(response => {
@@ -54,19 +69,11 @@ onMarkerClick = (vehicle) => {
     });
 }
 
-// handleClick = () => {
-//     this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
-//     if(this.state.currentVehicle.available === false){
-//       alert('This vehicle is not available');
-//     }else{
-//       this.props.history.push('view');
-//     }
-//     this.props.history.push('start');
-//   };
+
 
   render() {
       
-      
+    console.log(this.props.zoom);
     let mapMarker = this.state.car.map((vehicle, i) => {
         return (
             <Marker key={i}
@@ -91,14 +98,12 @@ onMarkerClick = (vehicle) => {
         <div style={style}>
        
        
-      <Map google={this.props.google} zoom={3.5} initialCenter={{
-        lat: 44.978031,
-        lng: -93.26350100000002
-          }} >
+      <Map center={this.props.initialCenter} google={this.props.google} zoom={this.props.zoom} initialCenter={this.props.initialCenter} >
             {/* <Marker 
             
             position={{lat: this.state.car[0].latitude, lng: this.state.car[0].longitude}}/> */}
         <Marker onClick={this.onCurrentLocation}
+         position={{lat:44.978031 , lng: -93.26350100000002}}
                 name={'Prime Digital Academy'} />
             {mapMarker}
   
@@ -151,7 +156,7 @@ onMarkerClick = (vehicle) => {
             <Button onClick={this.handleClose} color="primary">
               Close
             </Button>
-            <Button onClick={this.props.onHandleClick} color="primary">
+            <Button onClick={this.onHandleClick} color="primary">
             Continue to rent
             </Button>
           </DialogActions>
