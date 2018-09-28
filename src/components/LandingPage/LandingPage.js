@@ -16,17 +16,17 @@ class LandingPage extends Component {
     initialCenter: {
       lat: 37.09024, 
       lng: -95.712891
-        }
-    
+        },
+        currentVehicle:{}
       }
 
   }
 
 
-  getGeolocation (location){
-   
-  }
-
+  OnHandleClick = (vehicle) => {
+    this.props.history.push('view');
+    console.log('clicked');
+  };
 
 
   handleInput = (event) => {
@@ -66,6 +66,9 @@ class LandingPage extends Component {
    
   }
 
+  handleView = () => {
+    this.props.history.push('view');
+  }
 
   render() {
    
@@ -80,7 +83,7 @@ class LandingPage extends Component {
       
     )}
         <Grid container alignContent="flex-end">
-        <GoogleMap initialCenter={this.state.initialCenter} zoom={this.state.zoom} />
+        <GoogleMap initialCenter={this.state.initialCenter} zoom={this.state.zoom}  OnHandleClick={this.OnHandleClick} />
           
         <div>
         <React-Component style={{  margin: '0',
@@ -105,6 +108,7 @@ class LandingPage extends Component {
                 marginTop: '-35%',
               }}>
         Submit</Button></span>
+      
 
         </React-Component>
         <Grid item sm={6} style={{fontSize:'15px', color: 'white', marginTop:'2%' }}>

@@ -26,17 +26,7 @@ export class MapContainer extends Component {
     }
 
 
-    onHandleClick = () => {
-        this.props.dispatch({ type: 'ADD_DATA', payload: this.state })
-        if(this.state.currentVehicle.available === false){
-          alert('This vehicle is not available');
-        }else{
-          this.props.history.push('view');
-        }
-        this.props.history.push('start');
-    
-        console.log('clicked');
-      };
+
 
   
     getAllCars(){  
@@ -145,9 +135,7 @@ onMarkerClick = (vehicle) => {
                       width: '600px'
                     }} />
             <DialogContentText id="alert-dialog-slide-description">
-                    This car is currently in {this.state.currentVehicle.city} {this.state.currentVehicle.state}. As you can see it has a beautiful {this.state.currentVehicle.color} coat. 
-                    If you are interested in renting this vehicle go ahead and select rent and you'll be on your way to a roaming journey.
-                    Available for rent: {JSON.stringify(this.state.currentVehicle.available)}
+            Enjoy your time in {this.state.currentVehicle.city} {this.state.currentVehicle.state}. Select view more details to rent me or find other cars available in this city.
             </DialogContentText>
             
 
@@ -156,8 +144,8 @@ onMarkerClick = (vehicle) => {
             <Button onClick={this.handleClose} color="primary">
               Close
             </Button>
-            <Button onClick={this.onHandleClick} color="primary">
-            Continue to rent
+            <Button onClick={() =>this.props.OnHandleClick(this.state.car)} color="primary">
+            More Details
             </Button>
           </DialogActions>
         </Dialog> 
