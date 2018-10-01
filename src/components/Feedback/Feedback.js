@@ -78,15 +78,15 @@ class Feedback extends Component {
       
       <div>
          <LoggedInNav />
-        <Paper style={{width:'500px', height:'500px', marginLeft: '30%'}}>
+        <Paper style={{width:'400px', height:'500px', marginLeft: '40%'}}>
         <FormControl component="fieldset" fullWidth="true" style={{marginLeft: '25%'}}>
-        <FormLabel component="h1">Would you like to leave some feedback?</FormLabel>
+        <FormLabel component="h1" style={{marginLeft: '-15%'}}>Would you like to leave some feedback?</FormLabel>
           <RadioGroup   aria-label="feedback"
             name="feedback"
             
             value={this.state.rating}
             onChange={this.handleChange}
-            style={{marginLeft: '10%'}}>
+            style={{marginLeft: '2%'}}>
             <FormControlLabel value="1" control={<Radio />} label="1 - Needs Reinforcement" />
             <FormControlLabel value="2" control={<Radio />} label="2 - Below expectation" />
             <FormControlLabel value="3" control={<Radio />} label="3 - Meets Expectations" />
@@ -108,10 +108,10 @@ class Feedback extends Component {
           
        
         <br/>
-        <Button variant="contained"  aria-label="Delete" onClick={this.SubmitForm} style={{marginLeft: '10%'}}> Submit</Button>
+        <Button variant="contained"  aria-label="Delete" onClick={this.SubmitForm} style={{marginLeft: '0'}}> Submit</Button>
         
         <br/>
-        <Button variant="contained" color="secondary" aria-label="Delete" onClick={this.handleRoute} style={{marginLeft: '30%', marginTop: '-11%' }}> Continue </Button>
+        <Button variant="contained" color="secondary" aria-label="Delete" onClick={this.handleRoute} style={{marginLeft: '30%', marginTop: '-13.8%' }}> Continue </Button>
         </FormControl>
           </Paper>
         

@@ -78,7 +78,7 @@ onMarkerClick = (vehicle) => {
 
     const style = {
         height: '400px',
-        width: '1425px',
+        width: '100vw',
         position: 'relative',
         margin:'0 auto'
       }
@@ -135,7 +135,7 @@ onMarkerClick = (vehicle) => {
                       width: '600px'
                     }} />
             <DialogContentText id="alert-dialog-slide-description">
-            Enjoy your time in {this.state.currentVehicle.city} {this.state.currentVehicle.state}. Select view more details to rent me or find other cars available in this city.
+            Enjoy your time in {this.state.currentVehicle.city} {this.state.currentVehicle.state}. Select more details to rent me or find other cars available in this city.
             </DialogContentText>
             
 

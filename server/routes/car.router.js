@@ -18,6 +18,21 @@ router.get('/', (req, res) => {
 
 });
 
+
+
+router.get('/user', (req, res) => {
+    console.log(req.query);
+    // if (req.isAuthenticated()) {
+        const queryText = `SELECT * FROM "person";`;
+        pool.query(queryText)
+            .then(response => res.send(response.rows))
+             .catch(error => res.sendStatus(500));
+    // } else {
+    //     res.sendStatus(401);
+    // }
+
+});
+
 router.get('/all', (req, res) => {
     // if (req.isAuthenticated()) {
         const queryText = `SELECT * FROM "car";`;
@@ -127,7 +142,7 @@ router.delete('/:id', (req, res) => {
   });
 
   router.put('/garage/:id', (req, res) => {
-    const  carToEdit = req.body.editCar;
+    const  carToEdit = req.body;
     console.log('req.body:', carToEdit);
     const queryText = `UPDATE "car" SET "make" = $1, "model" = $2, "color" = $3, "year" = $4,
                        "city" = $5, "state" = $6, "image_path" = $7, "latitude" = $8,

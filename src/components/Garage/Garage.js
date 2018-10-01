@@ -18,7 +18,6 @@ class Garage extends Component {
         garage: [],
         open: false,
     currentVehicle:{},
-    editCar: {
       make: '',
       model: '',
       color: '',
@@ -28,12 +27,17 @@ class Garage extends Component {
       image_path: '',
       latitude: '',
       longitude: '',
-    }
       };
 
   componentDidMount(){
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.getMyCars();
+    this.config = {
+      cloud_name: process.env.REACT_APP_CLOUD,
+      api_key: process.env.REACT_APP_CLOUDINARY_API_KEY,
+      api_secret: process.env.REACT_APP_CLOUDINARY_API_KEY_SECRET,
+      upload_preset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+  }
   }
 
   ComponentDidUpdate() {
@@ -78,17 +82,17 @@ class Garage extends Component {
 
   handleChange = (event) => {
     this.setState({
-      editCar: {
-        ...this.state.editCar,
+     
+        ...this.state,
         [event.target.name]: event.target.value,
-      }
+      
     });
   }
 
 
     handleUpdate = id => () => {
       console.log(id)
-      axios.put('/api/cars/garage/'+ id, {editCar: this.state.editCar})
+      axios.put('/api/cars/garage/'+ id,  this.state)
       .then(response => {
         this.getMyCars();
         console.log('Car Updated', response);
@@ -99,6 +103,20 @@ class Garage extends Component {
     }
   
 
+    openCloudinary = () => {
+      window.cloudinary.openUploadWidget(this.config, (error, result) => {
+        if (result) {
+          // let cloudinaryUrl = result
+          this.setState({
+            // store url to local state BEFORE dispatching an action
+            ...this.state,
+            image_path: result[0].url        
+          })
+          alert('Uploaded Image')
+        }
+      })
+    }
+
 
   render() {
 
@@ -107,15 +125,16 @@ class Garage extends Component {
     return (
       <div>
        <LoggedInNav />
-             <Grid container justify="space-around" alignItems="flex-end" style={{marginTop: '20px'}}>
+             <Grid container justify="space-around" alignItems="flex-end" style={{margin: '   '}}>
             {this.state.garage.map((vehicle, i)=> {
               return(
               <Grid key={i} >
               
-              <Card style={{marginTop: '20px'}}>
+              <Card >
                 <CardMedia image={vehicle.image_path}
                 style={{height: '200px',
-                        width: '400px' 
+                        width: '400px',
+                       
                         }}/>
                 <CardContent>
                   <Typography variant="body1">
@@ -145,23 +164,25 @@ class Garage extends Component {
           </DialogTitle>
           <DialogContent>
         
-           <TextField onChange={this.handleChange} type="text" name="make" placeholder="make" value={this.state.make}/>
+           <TextField onChange={this.handleChange} type="text" name="make" placeholder={this.state.currentVehicle.make} value={this.state.make}/>
            <br/>
-           <TextField  onChange={this.handleChange} type="text" name="model" placeholder="model" value={this.state.model}/>
+           <TextField  onChange={this.handleChange} type="text" name="model" placeholder={this.state.currentVehicle.model} value={this.state.model}/>
            <br/>
-           <TextField onChange={this.handleChange} type="text" name="color" placeholder="color"  value={this.state.color}/>
+           <TextField onChange={this.handleChange} type="text" name="color" placeholder={this.state.currentVehicle.color}  value={this.state.color}/>
            <br/>
-           <TextField onChange={this.handleChange} type="text" name="year" placeholder="year"  value={this.state.year}/>
+           <TextField onChange={this.handleChange} type="text" name="year" placeholder={this.state.currentVehicle.year} value={this.state.year}/>
            <br/>
-           <TextField onChange={this.handleChange} type="text" name="city" placeholder="city"  value={this.state.city}/>
+           <TextField onChange={this.handleChange} type="text" name="city" placeholder={this.state.currentVehicle.city}  value={this.state.city}/>
            <br/>
-           <TextField onChange={this.handleChange} type="text" name="state" placeholder="state"  value={this.state.state}/>
+           <TextField onChange={this.handleChange} type="text" name="state" placeholder={this.state.currentVehicle.state}  value={this.state.state}/>
            <br/>
-           <TextField onChange={this.handleChange} type="text" name="image_path" placeholder="Image URL"  value={this.state.image_path}/>
+           <TextField onChange={this.handleChange} type="text" name="latitude" placeholder={this.state.currentVehicle.latitude}  value={this.state.latitude}/>
            <br/>
-           <TextField onChange={this.handleChange} type="text" name="latitude" placeholder="latitude"  value={this.state.latitude}/>
+           <TextField onChange={this.handleChange} type="text" name="longitude" placeholder={this.state.currentVehicle.longitude} value={this.state.longitude}/>
            <br/>
-           <TextField onChange={this.handleChange} type="text" name="longitude" placeholder="longitude" value={this.state.longitude}/>
+              <Button onClick={this.openCloudinary} color="primary">
+              Upload Image
+            </Button>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

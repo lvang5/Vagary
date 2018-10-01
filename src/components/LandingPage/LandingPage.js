@@ -48,7 +48,7 @@ class LandingPage extends Component {
       console.log(response.data.results[0].geometry.location);
       this.setState({
         initialCenter: response.data.results[0].geometry.location,
-        zoom: 12
+        zoom: 11
       });
     }).catch((error)=>{
       console.log(error)
@@ -111,9 +111,11 @@ class LandingPage extends Component {
       
 
         </React-Component>
-        <Grid item sm={6} style={{fontSize:'15px', color: 'white', marginTop:'2%' }}>
-        <Avatar alt="Lais Vang" src="https://avatars1.githubusercontent.com/u/38891207?s=460&v=4" style={{width: 100,
-        height: 100,}} />
+        <Grid item sm={6} style={{fontSize:'15px', color: 'white', position: 'fixed',
+bottom: '0',
+left: '0' }}>
+        <Avatar alt="Lais Vang" src="https://avatars1.githubusercontent.com/u/38891207?s=460&v=4" style={{width: 80,
+        height: 80,}} />
         <h3 className="founder-header">Founder</h3>
         <Typography style={{fontSize:'15px', color: 'white',  }}>
         Hello, I'm Lais a second generation Hmong American pursing my passion in technology by making a difference in the vast world of technology.

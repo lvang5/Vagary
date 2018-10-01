@@ -6,7 +6,6 @@ import { TextField } from '@material-ui/core';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { Grid, GridListTile, ListSubheader, Paper, Button } from '@material-ui/core';
 import LoggedInNav from '../Nav/LoginNav.js';
-import ReactFilestack from 'filestack-react';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -94,7 +93,7 @@ openCloudinary = () => {
           <form onSubmit={this.sendForm}>
             {/* get input values */}
             <Grid item xs={6}>
-            <Paper style={{width: '350px', marginLeft:'-45%'}}>
+            <Paper style={{width: '350px', marginLeft:'-20%'}}>
             <ListSubheader component="h1" style={{fontSize: '2em', color: 'black'}}>Car Registration</ListSubheader>
               <TextField
                 label="Make"
@@ -131,19 +130,6 @@ openCloudinary = () => {
                 margin="normal"
                 variant="outlined"
                 onChange={this.handleChange} type="text" name="state" value={this.state.state} />
-              <br />
-              {/* <TextField
-                label="Image URL"
-                margin="normal"
-                variant="outlined"
-                onChange={this.handleChange} type="text" name="image_path" value={this.state.image_path} /> */}
-                {/* <ReactFilestack
-                apikey={'AouYSlanfRRKrsdfEOVJhz'}
-                buttonText="Click me"
-                buttonClass="classname"
-                options={options}
-                onSuccess={this.getImage}
-                /> */}
               <br />
               <TextField
                 label="Latitude"
