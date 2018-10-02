@@ -9,22 +9,26 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
-
-
-
 ## Development Setup Instructions
 Steps to get the development environment running.
 1. Download this repo from github (click the lime green clone or download button)
 
 2. Create a .env file at the root of the project and paste this line into the file:
 SERVER_SESSION_SECRET=superDuperSecret
+REACT_APP_CLOUD=REACT_APP_CLOUD
+REACT_APP_CLOUDINARY_API_KEY=yourAPIKEY
+REACT_APP_CLOUDINARY_API_KEY_SECRET=APIKEYsecret
+REACT_APP_CLOUDINARY_UPLOAD_PRESET=Preset
 
 3. While you're in your new .env file, take the time to replace superDuperSecret with some long random string like 25POUbVtx6RKVNWszd9ERB9Bb6 to keep your application secure. Here's a site that can help you: 
 
 https://passwordsgenerator.net/. 
 
 If you don't do this step, create a secret with less than eight characters, or leave it as superDuperSecret, you will get a warning.
+
+All information for cloudinary will be on your landing page, settings, settings-privacy. 
+
+Google Maps API are used from 
 
 4. run npm install in the terminal under this project 
 
@@ -117,22 +121,33 @@ If you would like to name your database something else, you will need to change 
 ### Built With
  - JavaScript
  - React
- - Redux
+ - React-Redux
  - Material-UI
  - PostgreSQL
+ - HTML6
+ - CSS3
+ - React-Sagas
+ - Moment.JS
+ - Node.JS
+ - Express.JS
+ - Passport
+ - Google Maps API
+ - Google Geocode API
+ - Cloudinary
 
-
-## Getting Started
-
-
-### Installing
+## Screen Shot
+![Landing Page](public/landingpage.png)
 
 ## FEATURES
+- Cloudinary for image upload
+- Google Maps on landing page
+- Geocode for longitude and latitude search
+- Moment.JS for timing
 
-More to come
 
 
 
 ### Authors
 
 - Lais Vang
+- Google Map React: Ari

@@ -48,7 +48,7 @@ class LandingPage extends Component {
       console.log(response.data.results[0].geometry.location);
       this.setState({
         initialCenter: response.data.results[0].geometry.location,
-        zoom: 11
+        zoom: 10.5
       });
     }).catch((error)=>{
       console.log(error)

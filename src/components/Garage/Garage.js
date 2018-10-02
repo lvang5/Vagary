@@ -176,9 +176,9 @@ class Garage extends Component {
            <br/>
            <TextField onChange={this.handleChange} type="text" name="state" placeholder={this.state.currentVehicle.state}  value={this.state.state}/>
            <br/>
-           <TextField onChange={this.handleChange} type="text" name="latitude" placeholder={this.state.currentVehicle.latitude}  value={this.state.latitude}/>
+           <TextField onChange={this.handleChange} type="text" name="latitude" defaultValue={this.state.currentVehicle.latitude}/>
            <br/>
-           <TextField onChange={this.handleChange} type="text" name="longitude" placeholder={this.state.currentVehicle.longitude} value={this.state.longitude}/>
+           <TextField onChange={this.handleChange} type="text" name="longitude" defaultValue={this.state.currentVehicle.longitude} />
            <br/>
               <Button onClick={this.openCloudinary} color="primary">
               Upload Image
