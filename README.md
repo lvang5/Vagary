@@ -124,7 +124,7 @@ If you would like to name your database something else, you will need to change 
  - React-Redux
  - Material-UI
  - PostgreSQL
- - HTML6
+ - HTML5
  - CSS3
  - React-Sagas
  - Moment.JS
