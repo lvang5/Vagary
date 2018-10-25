@@ -145,8 +145,6 @@ If you would like to name your database something else, you will need to change 
 - Moment.JS for timing
 
 
-
-
 ### Authors
 
 - Lais Vang
