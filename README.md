@@ -144,6 +144,15 @@ If you would like to name your database something else, you will need to change 
 - Geocode for longitude and latitude search
 - Moment.JS for timing
 
+### Next Steps
+
+- Add more styling styling
+- Create a more user friendly applicaiton
+- Fix bugs on applicaiton
+- Add database cascading to application
+
+
+
 
 
 
