@@ -124,7 +124,7 @@ If you would like to name your database something else, you will need to change 
  - React-Redux
  - Material-UI
  - PostgreSQL
- - HTML6
+ - HTML5
  - CSS3
  - React-Sagas
  - Moment.JS
@@ -143,6 +143,15 @@ If you would like to name your database something else, you will need to change 
 - Google Maps on landing page
 - Geocode for longitude and latitude search
 - Moment.JS for timing
+
+### Next Steps
+
+- Add more styling styling
+- Create a more user friendly applicaiton
+- Fix bugs on applicaiton
+- Add database cascading to application
+
+
 
 
 ### Authors
